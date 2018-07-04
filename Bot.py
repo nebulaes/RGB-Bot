@@ -103,6 +103,11 @@ async def now(ctx, text):
     text = "The Time Is "+time2
     await bot.send_message(ctx.message.channel, text, tts=bool(ttsvalue))
         
+@bot.event
+async def on_message(message):
+    if message.content.startswith("👏👏") or message.content.startswith("👏 👏"):
+        await bot.send_message(message.channel,"***MEME REVIEW***")
+        
 @bot.command(pass_context=True)
 async def rank(ctx, name):
     n = str(name)
