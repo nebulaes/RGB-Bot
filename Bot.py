@@ -20,7 +20,7 @@ async def on_ready():
     async for message in bot.logs_from(c, limit=1):
         await bot.delete_message(message)
     embed=discord.Embed(title="Server Rules:", color=0xf07e00)
-    embed.set_author(name="RULES")
+    embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/259028945104666637/464161871511945228/Nebula_Logo_3.png")
     embed.add_field(name="1.", value="-No Toxicity", inline=True)
     embed.add_field(name="2.", value="-No Spamming", inline=True)
