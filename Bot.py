@@ -17,7 +17,8 @@ async def on_ready():
                 global c
                 c = channel
 
-    await bot.change_presence(game=discord.Game(name="This Server"))
+    time2 =str(time.strftime("%I:%M")+" GMT")
+    await bot.change_presence(game=discord.Game(name=time2))
     async for message in bot.logs_from(c, limit=1):
         await bot.delete_message(message)
     embed=discord.Embed(title="Server Rules:", color=0xf07e00)
@@ -129,5 +130,15 @@ async def rules(ctx):
     msg = await bot.say("RULES \n -No Toxicity \n -No Spamming \n -No Posting DMs \n -No Racism \n -No Posting or using Faces (Even Blurred) Without Permission \n -If You Join A Call And Are Asked To Mute Your Mic, Mute It \n -If Moved Out A Chat, Don't Move Back \n -Respect All Members \n -Respect Admins And Listen To Them")
     print(msg)
 
-##bot.run("NDYxMzA2NTgyOTU4MDgwMDEw.Dh5neA.i9OAI9ZECs0kyW8xhokaCQ7Fjq8")       
+async def timeloop():
+    await bot.wait_until_ready()
+    while not bot.is_closed:
+        time2 =str(time.strftime("%I:%M")+" GMT")
+        print(time2)
+        await bot.change_presence(game=discord.Game(name=time2, type=3))
+        await asyncio.sleep(1)
+        await bot.change_presence(game=discord.Game(name=time2, type=3))
+        await asyncio.sleep(25)
+    
+bot.loop.create_task(timeloop())
 bot.run(os.getenv('TOKEN'))
