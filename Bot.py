@@ -109,6 +109,9 @@ async def on_message(message):
         await bot.send_message(message.channel,"***MEME REVIEW***")
    else:
    		pass
+   if message.content.lower().startswith("dip dip"):
+        await bot.send_message(message.channel,"🥔🍟")
+    
    try:
         await bot.process_commands(message)
    except Exception:
