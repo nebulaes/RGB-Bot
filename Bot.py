@@ -109,7 +109,7 @@ async def on_message(message):
         await bot.send_message(message.channel,"***MEME REVIEW***")
    else:
    		pass
-        
+   await bot.process_commands(message)
 @bot.command(pass_context=True)
 async def rank(ctx, name):
     n = str(name)
