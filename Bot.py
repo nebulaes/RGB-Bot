@@ -107,8 +107,8 @@ async def now(ctx, text):
 async def on_message(message):
    if message.content.startswith("👏👏") or message.content.startswith("👏 👏"):
         await bot.send_message(message.channel,"***MEME REVIEW***")
-    else:
-        pass
+   else:
+   		pass
         
 @bot.command(pass_context=True)
 async def rank(ctx, name):
