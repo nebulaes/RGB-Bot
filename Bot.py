@@ -109,24 +109,19 @@ async def on_message(message):
         await bot.send_message(message.channel,"***MEME REVIEW***")
    else:
    		pass
-   await bot.process_commands(message)
+   try:
+        await bot.process_commands(message)
+   except Exception:
+        pass
+
 @bot.command(pass_context=True)
-async def rank(ctx, name):
-    n = str(name)
-    url = "https://api.r6stats.com/api/v1/players/%s/seasons?platform=uplay" % name
-    r = requests.get(url)
-    player = json.loads(r.text)
-    if 'status' in player.keys() and 'failed' in player['status']:
-        return False
-    elif not player['seasons']:
-        return 'Bronze'
-    rank = data.ranks[player['seasons'][list(player['seasons'].keys())[0]]['emea']['ranking']['rank'] - 1]['label']
-    if n == "tamarix.brt" or n == "Tamarix.brt" or n == "tamarix-brt" or n == "Tamarix-brt" or n == "tamarix_yt":
-        await bot.say("Gold")
-    elif n == "hitman._." or n == "Hitman._.":
-        await bot.say("Never Diamond")
-    else:
-        await bot.say(rank)
+async def hmm(ctx):
+    channel = ctx.message.channel
+    async for message in bot.logs_from(channel, limit=1):
+        await bot.delete_message(message)
+    await bot.send_message(channel, "HmmMmMMMmmmMmMmMMMmmmMm")
+    
+
 
 @bot.command(pass_context=True)
 async def rules(ctx):
