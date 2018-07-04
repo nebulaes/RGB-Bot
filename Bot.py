@@ -14,7 +14,7 @@ async def on_ready():
     for server in bot.servers:
         for channel in server.channels:
             if channel.id == "463789709341097984":
-                global string c
+                global c
                 c = channel
 
     await bot.change_presence(game=discord.Game(name="This Server"))
