@@ -13,7 +13,7 @@ startup_extensions = ["Music"]
 @bot.event
 async def on_ready():
     print("Ready")
-
+    await bot.change_presence(game=discord.Game(name="This Server"))
 class Main_Commands():
     def __init__(self, bot):
         self.bot = bot
