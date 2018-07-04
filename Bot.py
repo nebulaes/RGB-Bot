@@ -88,4 +88,4 @@ if __name__ == "__main__":
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to Load Extension')
         
-bot.run(TOKEN)
+bot.run(os.getenv('TOKEN'))
