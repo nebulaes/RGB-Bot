@@ -14,6 +14,7 @@ async def on_ready():
     for server in bot.servers:
         for channel in server.channels:
             if channel.id == "463789709341097984":
+                global string c
                 c = channel
 
     await bot.change_presence(game=discord.Game(name="This Server"))
@@ -37,9 +38,10 @@ async def on_ready():
 
 @bot.event
 async def on_reaction_add(reaction, user):
+    channel = reaction.message.channel
     role = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
     role2 = discord.utils.get(user.server.roles, name="New")
-    if reaction.emoji == '✅':
+    if reaction.emoji == '✅' and channel == c:
         try:
             await bot.add_roles(user, role)
         except Exception:
@@ -111,8 +113,6 @@ async def rules(ctx):
         await bot.delete_message(message)
     msg = await bot.say("RULES \n -No Toxicity \n -No Spamming \n -No Posting DMs \n -No Racism \n -No Posting or using Faces (Even Blurred) Without Permission \n -If You Join A Call And Are Asked To Mute Your Mic, Mute It \n -If Moved Out A Chat, Don't Move Back \n -Respect All Members \n -Respect Admins And Listen To Them")
     print(msg)
-    reaction = '✅'
-    await bot.add_reaction(msg, reaction)
 
 ##bot.run("NDYxMzA2NTgyOTU4MDgwMDEw.Dh5neA.i9OAI9ZECs0kyW8xhokaCQ7Fjq8")       
 bot.run(os.getenv('TOKEN'))
