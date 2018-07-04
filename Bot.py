@@ -38,7 +38,6 @@ async def on_ready():
 
 @bot.event
 async def on_reaction_add(reaction, user):
-    print("Added")
     role = discord.utils.get(user.server.roles, name="New")
     if reaction.emoji == '✅':
         await bot.add_roles(user, role)
