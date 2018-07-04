@@ -92,11 +92,11 @@ async def clear(ctx, amount=100):
 async def now(ctx, text):
     ttsvalue = str(text)
     if ttsvalue.lower() == "yes" :
-        ttsvalue = "True"
+        ttsvalue = 1
     if ttsvalue.lower() == "no":
-        ttsvalue = "False"
+        ttsvalue = 0
     else:
-        ttsvalue = "False"
+        ttsvalue = 0
     
 
     time2 = time.strftime("%I %M")
