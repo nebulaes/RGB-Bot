@@ -137,7 +137,7 @@ async def timeloop():
         await bot.change_presence(game=discord.Game(name=time2, type=3))
         await asyncio.sleep(1)
         await bot.change_presence(game=discord.Game(name=time2, type=3))
-        await asyncio.sleep(25)
+        await asyncio.sleep(15)
     
 bot.loop.create_task(timeloop())
 bot.run(os.getenv('TOKEN'))
