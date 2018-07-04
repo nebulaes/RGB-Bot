@@ -90,11 +90,11 @@ async def clear(ctx, amount=100):
 
 @bot.command(pass_context=True)
 async def now(ctx, text):
-    ttsvalue = str(text)
-    if ttsvalue.lower() == "yes" :
-        ttsvalue = 1
+    ttsv = str(text)
+    if ttsv.lower() == "yes" :
+        ttsv = 1
     if ttsvalue.lower() == "no":
-        ttsvalue = 0
+        ttsv = 0
     else:
         ttsvalue = 0
     
