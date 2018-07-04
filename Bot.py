@@ -38,8 +38,16 @@ async def on_ready():
 @bot.event
 async def on_reaction_add(reaction, user):
     role = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
+    role2 = discord.utils.get(user.server.roles, name="New")
     if reaction.emoji == '✅':
-        await bot.add_roles(user, role)
+        try:
+            await bot.add_roles(user, role)
+        except Exception:
+            pass
+        try:
+            await bot.remove_roles(user, role2)
+        except Exception:
+            pass
 
 ##@client.command(pass_context=True)
 ##async def spam(ctx, name, x=5):
