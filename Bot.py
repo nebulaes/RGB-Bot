@@ -88,6 +88,21 @@ async def clear(ctx, amount=100):
         await bot.delete_message(message)
 
 @bot.command(pass_context=True)
+async def now(ctx, text):
+    ttsvalue = str(text)
+    if ttsvalue.lower() == "yes" :
+        ttsvalue = "True"
+    if ttsvalue.lower() == "no":
+        ttsvalue = "False"
+    else:
+        ttsvalue = "False"
+    
+
+    time2 = time.strftime("%I %M")
+    text = "The Time Is "+time2
+    await bot.send_message(ctx.message.channel, text, tts=bool(ttsvalue))
+        
+@bot.command(pass_context=True)
 async def rank(ctx, name):
     n = str(name)
     url = "https://api.r6stats.com/api/v1/players/%s/seasons?platform=uplay" % name
