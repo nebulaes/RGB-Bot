@@ -134,7 +134,6 @@ async def timeloop():
     await bot.wait_until_ready()
     while not bot.is_closed:
         time2 =str(time.strftime("%I:%M")+" GMT")
-        print(time2)
         await bot.change_presence(game=discord.Game(name=time2, type=3))
         await asyncio.sleep(1)
         await bot.change_presence(game=discord.Game(name=time2, type=3))
