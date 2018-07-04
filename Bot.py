@@ -6,17 +6,17 @@ import time, json, ranks as data, requests
 from discord.voice_client import VoiceClient
 
 bot=discord.Client()
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix=".")
 
-startup_extensions = ["Music"]
+##startup_extensions = ["Music"]
 
 @bot.event
 async def on_ready():
     print("Ready")
     await bot.change_presence(game=discord.Game(name="This Server"))
-class Main_Commands():
-    def __init__(self, bot):
-        self.bot = bot
+##class Main_Commands():
+##    def __init__(self, bot):
+##        self.bot = bot
         
 ##
 ##@client.command(pass_context=True)
@@ -80,12 +80,12 @@ async def rank(ctx, name):
         await bot.say(rank)
 
 
-if __name__ == "__main__":
-    for extension in startup_extensions:
-        try:
-            bot.load_extension(extension)
-        except Exception as e:
-            exc = '{}: {}'.format(type(e).__name__, e)
-            print('Failed to Load Extension')
+##if __name__ == "__main__":
+##    for extension in startup_extensions:
+##        try:
+##            bot.load_extension(extension)
+##        except Exception as e:
+##            exc = '{}: {}'.format(type(e).__name__, e)
+##           print('Failed to Load Extension')
         
 bot.run(os.getenv('TOKEN'))
