@@ -8,8 +8,6 @@ from discord.voice_client import VoiceClient
 bot=discord.Client()
 bot = commands.Bot(command_prefix="!")
 
-##startup_extensions = ["Music"]
-
 @bot.event
 async def on_ready():
     print("Ready")
@@ -45,12 +43,6 @@ async def on_reaction_add(reaction, user):
     if reaction.emoji == '✅':
         await bot.add_roles(user, role)
 
-
-##class Main_Commands():
-##    def __init__(self, bot):
-##        self.bot = bot
-        
-##
 ##@client.command(pass_context=True)
 ##async def spam(ctx, name, x=5):
 ##    print(ctx)
@@ -116,23 +108,5 @@ async def rules(ctx):
     reaction = '✅'
     await bot.add_reaction(msg, reaction)
 
-
-
-##    reactors = cache_msg.get_reaction_users(react)
-##    print(reactors)
-##    for reactor in reactors:
-##        await bot.add_roles(reactor, role)
-##        print("added")
-                    
-
-
-            
-##if __name__ == "__main__":
-##    for extension in startup_extensions:
-##        try:
-##            bot.load_extension(extension)
-##        except Exception as e:
-##            exc = '{}: {}'.format(type(e).__name__, e)
-##           print('Failed to Load Extension')
-bot.run("NDYxMzA2NTgyOTU4MDgwMDEw.Dh5neA.i9OAI9ZECs0kyW8xhokaCQ7Fjq8")       
-#bot.run(os.getenv('TOKEN'))
+##bot.run("NDYxMzA2NTgyOTU4MDgwMDEw.Dh5neA.i9OAI9ZECs0kyW8xhokaCQ7Fjq8")       
+bot.run(os.getenv('TOKEN'))
