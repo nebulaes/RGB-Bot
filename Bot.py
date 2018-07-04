@@ -18,7 +18,7 @@ async def on_ready():
                 c = channel
 
     time2 =str(time.strftime("%I:%M")+" GMT")
-    await bot.change_presence(game=discord.Game(name=time2))
+    await bot.change_presence(game=discord.Game(name=time2, type=3))
     async for message in bot.logs_from(c, limit=1):
         await bot.delete_message(message)
     embed=discord.Embed(title="Server Rules:", color=0xf07e00)
