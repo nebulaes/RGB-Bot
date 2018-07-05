@@ -89,7 +89,7 @@ async def clear(ctx, amount=100):
         await bot.delete_message(message)
 
 @bot.command(pass_context=True)
-async def now(ctx, value):
+async def now(ctx, value=0):
     value=int(value)
     if value != 0 and value != 1:
         value = 0
