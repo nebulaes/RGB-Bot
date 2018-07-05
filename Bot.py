@@ -21,6 +21,11 @@ async def on_ready():
     await bot.change_presence(game=discord.Game(name=time2, type=3))
     async for message in bot.logs_from(c, limit=1):
         await bot.delete_message(message)
+        
+    embed2=discord.Embed(title="RULES", color=0xf9b942)
+    embed2.add_field(name="1.", value="ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
+    msg = await bot.send_message(c, embed=embed2)
+        
     embed=discord.Embed(title="Server Rules:", color=0xf07e00)
     embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
     embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/259028945104666637/464161871511945228/Nebula_Logo_3.png")
@@ -32,10 +37,6 @@ async def on_ready():
     embed.add_field(name="6.", value="-Respect All Members", inline=False)
     embed.set_footer(text="Thank You.")
     msg = await bot.send_message(c, embed=embed)
-    
-    embed2=discord.Embed(title="RULES", color=0xf9b942)
-    embed2.add_field(name="1.", value="ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
-    msg = await bot.send_message(c, embed=embed2)
     
     reaction = '✅'
     await bot.add_reaction(msg, reaction)
