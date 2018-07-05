@@ -96,7 +96,7 @@ async def now(ctx, value):
 
     time2 = time.strftime("%I %M")
     text = "The Time Is "+time2
-    await bot.send_message(ctx.message.channel, text, tts=bool(ttsvalue))
+    await bot.send_message(ctx.message.channel, text, tts=bool(value))
         
 @bot.event
 async def on_message(message):
