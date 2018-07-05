@@ -89,15 +89,10 @@ async def clear(ctx, amount=100):
         await bot.delete_message(message)
 
 @bot.command(pass_context=True)
-async def now(ctx, text):
-    ttsv = str(text)
-    if ttsv.lower() == "yes" :
-        ttsv = 1
-    if ttsvalue.lower() == "no":
-        ttsv = 0
-    else:
-        ttsvalue = 0
-    
+async def now(ctx, value):
+    value=int(value)
+    if value != 0 or value != 1:
+        value = 0
 
     time2 = time.strftime("%I %M")
     text = "The Time Is "+time2
