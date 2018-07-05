@@ -24,7 +24,7 @@ async def on_ready():
         
     embed2=discord.Embed(title="RULES", color=0xf9b942)
     embed2.add_field(name="", value="ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
-    msg = await bot.send_message(c, embed=embed2)
+    msg2 = await bot.send_message(c, embed=embed2)
         
     embed=discord.Embed(title="Server Rules:", color=0xf07e00)
     embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
