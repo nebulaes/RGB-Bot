@@ -32,6 +32,11 @@ async def on_ready():
     embed.add_field(name="6.", value="-Respect All Members", inline=False)
     embed.set_footer(text="Thank You.")
     msg = await bot.send_message(c, embed=embed)
+    
+    embed2=discord.Embed(title="RULES", color=0xf9b942)
+    embed2.add_field(name=1., value=ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK, inline=False)
+    msg = await bot.send_message(c, embed=embed2)
+    
     reaction = '✅'
     await bot.add_reaction(msg, reaction)
 
