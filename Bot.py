@@ -16,6 +16,9 @@ async def on_ready():
             if channel.id == "463789709341097984":
                 global c
                 c = channel
+            elif channel.id == "465584250129743874":
+                global b
+                b = channel
 
     time2 =str(time.strftime("%I:%M")+" GMT")
     await bot.change_presence(game=discord.Game(name=time2, type=3))
@@ -33,10 +36,16 @@ async def on_ready():
     embed.add_field(name="7.", value="ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
     embed.set_footer(text="Thank You.")
     msg = await bot.send_message(c, embed=embed)
-    
+    embed=discord.Embed(title="SERVER")
+    embed.add_field(name=EU, value=React With: 🇪🇺, inline=False)
+    embed.add_field(name=NA, value=React With: 🏳️‍🌈, inline=True)
+    msg2 = await bot.send_message(b, embed=embed)
     reaction = '✅'
     await bot.add_reaction(msg, reaction)
-
+    reactionEU = '🇪🇺'
+    reactionNA = '🌈'
+    await bot.add_reaction(msg2, reactionEU)
+    await bot.add_reaction(msg2, reactionNA)
 
 
 @bot.event
