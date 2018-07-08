@@ -70,6 +70,11 @@ async def on_reaction_add(reaction, user):
             await bot.add_roles(user, roleEU)
         except Exception:
             pass
+    if reaction.emoji == '🌈' and channel == b:
+        try:
+            await bot.add_roles(user, roleNA)
+        except Exception:
+            pass
         
 
 ##@client.command(pass_context=True)
