@@ -39,6 +39,8 @@ async def on_ready():
     embed=discord.Embed(title="SERVER")
     embed.add_field(name="EU", value="React With: 🇪🇺", inline=False)
     embed.add_field(name="NA", value="React With: 🌈", inline=True)
+    async for message in bot.logs_from(b, limit=1):
+        await bot.delete_message(message)
     msg2 = await bot.send_message(b, embed=embed)
     reaction = '✅'
     await bot.add_reaction(msg, reaction)
@@ -53,6 +55,7 @@ async def on_reaction_add(reaction, user):
     channel = reaction.message.channel
     role = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
     role2 = discord.utils.get(user.server.roles, name="New")
+    roleEU = discord.utils.get(user.server.roles, name="EU")
     if reaction.emoji == '✅' and channel == c:
         try:
             await bot.add_roles(user, role)
@@ -62,6 +65,12 @@ async def on_reaction_add(reaction, user):
             await bot.remove_roles(user, role2)
         except Exception:
             pass
+    if reaction.emoji == '🇪🇺' and channel == b:
+        try:
+            await bot.add_roles(user, roleEU)
+        except Exception:
+            pass
+        
 
 ##@client.command(pass_context=True)
 ##async def spam(ctx, name, x=5):
