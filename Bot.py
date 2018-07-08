@@ -37,8 +37,8 @@ async def on_ready():
     embed.set_footer(text="Thank You.")
     msg = await bot.send_message(c, embed=embed)
     embed=discord.Embed(title="SERVER")
-    embed.add_field(name=EU, value=React With: 🇪🇺, inline=False)
-    embed.add_field(name=NA, value=React With: 🏳️‍🌈, inline=True)
+    embed.add_field(name="EU", value="React With: 🇪🇺", inline=False)
+    embed.add_field(name="NA", value="React With: 🌈", inline=True)
     msg2 = await bot.send_message(b, embed=embed)
     reaction = '✅'
     await bot.add_reaction(msg, reaction)
