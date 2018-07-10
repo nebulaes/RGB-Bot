@@ -56,6 +56,7 @@ async def on_reaction_add(reaction, user):
     role = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
     role2 = discord.utils.get(user.server.roles, name="New")
     roleEU = discord.utils.get(user.server.roles, name="EU")
+    roleNA = discord.utils.get(user.server.roles, name="NA")
     if reaction.emoji == '✅' and channel == c:
         try:
             await bot.add_roles(user, role)
