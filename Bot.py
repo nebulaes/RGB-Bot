@@ -20,7 +20,9 @@ async def on_ready():
                 global b
                 b = channel
 
-    time2 =str(time.strftime("%I:%M")+" GMT")
+    h = int(time.strftime("%I"))
+    m = str(time.strftime("%M"))
+    time2 = (str(h+1)+":"+m+" BST")
     await bot.change_presence(game=discord.Game(name=time2, type=3))
     async for message in bot.logs_from(c, limit=1):
         await bot.delete_message(message)    
@@ -161,7 +163,7 @@ async def timeloop():
     while not bot.is_closed:
         h = int(time.strftime("%I"))
         m = str(time.strftime("%M"))
-        time2 = (str(h+1)+":"+m)
+        time2 = (str(h+1)+":"+m+" BST")
         await bot.change_presence(game=discord.Game(name=time2, type=3))
         await asyncio.sleep(5)
 
