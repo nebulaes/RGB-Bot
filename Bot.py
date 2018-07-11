@@ -54,6 +54,8 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     await bot.send_message(member, "Hey! Accept The Rules To Gain A Role, Tick The Green Tick In The Rules Chat! ")
+    role = discord.utils.get(member.server.roles, name="New")
+    await bot.add_roles(member, role)
     
     
 @bot.event
