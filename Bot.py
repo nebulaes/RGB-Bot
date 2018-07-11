@@ -53,7 +53,7 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    await member.send_message("Hey! Accept The Rules To Gain A Role, Tick The Green Tick In The Rules Chat! ")
+    await bot.send_message(member, "Hey! Accept The Rules To Gain A Role, Tick The Green Tick In The Rules Chat! ")
     
     
 @bot.event
