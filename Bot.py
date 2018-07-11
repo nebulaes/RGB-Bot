@@ -51,7 +51,11 @@ async def on_ready():
     await bot.add_reaction(msg2, reactionEU)
     await bot.add_reaction(msg2, reactionNA)
 
-
+@bot.event
+async def on_member_join(member):
+    await member.send_message("Hey! Accept The Rules To Gain A Role, Tick The Green Tick In The Rules Chat! ")
+    
+    
 @bot.event
 async def on_reaction_add(reaction, user):
     channel = reaction.message.channel
