@@ -122,7 +122,9 @@ async def now(ctx, value=0):
     if value != 0 and value != 1:
         value = 0
 
-    time2 = time.strftime("%I %M")
+    h = int(time.strftime("%I"))
+    m = str(time.strftime("%M"))
+    time2 = (str(h+1)+":"+m+" BST")
     text = "The Time Is "+time2
     await bot.send_message(ctx.message.channel, text, tts=bool(value))
         
