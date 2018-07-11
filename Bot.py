@@ -40,14 +40,14 @@ async def on_ready():
     msg = await bot.send_message(c, embed=embed)
     embed=discord.Embed(title="SERVER")
     embed.add_field(name="EU", value="React With: 🇪🇺", inline=False)
-    embed.add_field(name="NA", value="React With: 🌈", inline=True)
+    embed.add_field(name="NA", value="React With: 🇺🇸", inline=True)
     async for message in bot.logs_from(b, limit=1):
         await bot.delete_message(message)
     msg2 = await bot.send_message(b, embed=embed)
     reaction = '✅'
     await bot.add_reaction(msg, reaction)
     reactionEU = '🇪🇺'
-    reactionNA = '🌈'
+    reactionNA = '🇺🇸'
     await bot.add_reaction(msg2, reactionEU)
     await bot.add_reaction(msg2, reactionNA)
 
