@@ -19,6 +19,9 @@ async def on_ready():
             elif channel.id == "465584250129743874":
                 global b
                 b = channel
+            elif channel.id == "463785244772794370":
+                global w
+                w = channel
 
     h = int(time.strftime("%I"))
     m = str(time.strftime("%M"))
@@ -56,6 +59,10 @@ async def on_member_join(member):
     await bot.send_message(member, "Hey! Accept The Rules To Gain A Role, Tick The Green Tick In The Rules Chat! ")
     role = discord.utils.get(member.server.roles, name="New")
     await bot.add_roles(member, role)
+    embed=discord.Embed(title=str(member.name), color=0xfa9361)
+    embed.set_author(name="Welcome To Nebula:")
+    embed.set_thumbnail(url=member.avatar_url)
+    await bot.send_message(w,embed=embed)
     
     
 @bot.event
