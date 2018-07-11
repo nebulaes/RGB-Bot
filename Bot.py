@@ -159,11 +159,12 @@ async def rules(ctx):
 async def timeloop():
     await bot.wait_until_ready()
     while not bot.is_closed:
-        time2 =str(time.strftime("%I:%M")+" GMT")
-        await bot.change_presence(game=discord.Game(name=time2, type=3))
-        await asyncio.sleep(1)
+        h = int(time.strftime("%I"))
+        m = str(time.strftime("%M"))
+        time2 = (str(h+1)+":"+m)
         await bot.change_presence(game=discord.Game(name=time2, type=3))
         await asyncio.sleep(5)
+
     
 bot.loop.create_task(timeloop())
 bot.run(os.getenv('TOKEN'))
