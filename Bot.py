@@ -73,10 +73,7 @@ async def on_reaction_add(reaction, user):
     roleEU = discord.utils.get(user.server.roles, name="EU")
     roleNA = discord.utils.get(user.server.roles, name="NA")
     if reaction.emoji == '✅' and channel == c:
-        try:
-            await bot.add_roles(user, role)
-        except Exception:
-            pass
+        await bot.add_roles(user, role)
         try:
             await bot.remove_roles(user, role2)
         except Exception:
