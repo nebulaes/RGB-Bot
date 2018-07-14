@@ -78,6 +78,7 @@ async def on_reaction_add(reaction, user):
             await bot.remove_roles(user, role2)
         except Exception:
             pass
+        await bot.add_roles(user, role)
     if reaction.emoji == '🇪🇺' and channel == b:
         try:
             await bot.add_roles(user, roleEU)
