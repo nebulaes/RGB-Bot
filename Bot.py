@@ -58,7 +58,9 @@ async def on_ready():
 async def on_member_join(member):
     await bot.send_message(member, "Hey! Accept The Rules To Gain A Role, Tick The Green Tick In The Rules Chat! ")
     role = discord.utils.get(member.server.roles, name="New")
+    role2 = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
     await bot.add_roles(member, role)
+    await bot.add_roles(member, role2)
     embed=discord.Embed(title=str(member.name), color=0xfa9361)
     embed.set_author(name="Welcome To Nebula:")
     embed.set_thumbnail(url=member.avatar_url)
