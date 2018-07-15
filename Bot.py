@@ -78,13 +78,16 @@ async def on_reaction_add(reaction, user):
             await bot.remove_roles(user, role2)
         except Exception:
             pass
-        await bot.add_roles(user, role)
-    if reaction.emoji == '🇪🇺' and channel == b:
+        try:
+            await bot.add_roles(user, role)
+        except Exception:
+            print("Failed To Add Member Role")
+    elif reaction.emoji == '🇪🇺' and channel == b:
         try:
             await bot.add_roles(user, roleEU)
         except Exception:
             pass
-    if reaction.emoji == '🌈' and channel == b:
+    elif reaction.emoji == '🌈' and channel == b:
         try:
             await bot.add_roles(user, roleNA)
         except Exception:
