@@ -60,7 +60,7 @@ async def on_member_join(member):
     role = discord.utils.get(member.server.roles, name="New")
     role2 = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
     await bot.add_roles(member, role)
-    await bot.add_roles(member, role2)
+    #await bot.add_roles(member, role2)
     embed=discord.Embed(title=str(member.name), color=0xfa9361)
     embed.set_author(name="Welcome To Nebula:")
     embed.set_thumbnail(url=member.avatar_url)
