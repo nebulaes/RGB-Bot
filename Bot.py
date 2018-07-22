@@ -48,7 +48,9 @@ async def on_ready():
         await bot.delete_message(message)
     msg2 = await bot.send_message(b, embed=embed)
     reaction = '✅'
+    reactionDJ = '🎧'
     await bot.add_reaction(msg, reaction)
+    await bot.add_reaction(msg, reactionDJ)
     reactionEU = '🇪🇺'
     reactionNA = '🇺🇸'
     await bot.add_reaction(msg2, reactionEU)
