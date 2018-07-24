@@ -38,7 +38,7 @@ async def on_ready():
     embed.add_field(name="4.", value="-No Racism", inline=False)
     embed.add_field(name="5.", value="-Respect Admins", inline=False)
     embed.add_field(name="6.", value="-Respect All Members", inline=False)
-    embed.add_field(name="7.", value="-No fUCkIng pORn NIcK", inline=False)
+    embed.add_field(name="7.", value="-No NSFW", inline=False)
     embed.add_field(name="8.", value="ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
     embed.set_footer(text="Thank You.")
     msg = await bot.send_message(c, embed=embed)
