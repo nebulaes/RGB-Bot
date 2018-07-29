@@ -70,6 +70,27 @@ async def on_member_join(member):
     await bot.add_roles(member, role2)
     
     
+@bot.command(pass_context=True)
+async def admin(ctx):
+    admins=[]
+    server = ctx.message.server
+    for role in server.roles:
+        #print(role)
+        if "admin" in str(role) or "Admin" in str(role):
+            adminRole = role
+            pass
+    for member in server.members:
+        if adminRole in member.roles:
+            #print(member.name)
+            admins.append(member.name)
+
+    embed=discord.Embed(title="Admins:", color=0xff3f06)
+    for x in range(len(admins)):
+        #print(admins[x])
+        embed.add_field(name="{}.".format(x+1), value=str(admins[x]), inline=True)
+    await bot.say(embed=embed)
+    
+    
 @bot.event
 async def on_reaction_add(reaction, user):
     channel = reaction.message.channel
