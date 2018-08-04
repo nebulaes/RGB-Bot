@@ -64,7 +64,7 @@ async def on_member_join(member):
             if channel.id == "463785244772794370":
                 w = channel
     print("{} Has Joined".format(member))
-    embed=discord.Embed(title=str("@{}".format(member.name)), color=0xfa9361)
+    embed=discord.Embed(title=str(member.name), color=0xfa9361)
     embed.set_author(name="Welcome To Nebula:")
     embed.set_thumbnail(url=member.avatar_url)
     await bot.send_message(w,embed=embed)
