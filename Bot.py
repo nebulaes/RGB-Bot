@@ -184,8 +184,8 @@ async def on_message(message):
    		pass
    if message.content.lower().startswith("dip dip"):
         await bot.send_message(message.channel,"🥔🍟")
-   if "prodigy" in str(message.content.lower()) and message.author != "RGB-Bot":
-        await bot.send_message(message.channel, "Fuck You Prodigy")
+   if "prodigy" in str(message.content.lower()):
+        await bot.send_message(message.channel, "Fuck You PRODɪGY")
    else:
         pass
     
@@ -206,7 +206,7 @@ async def fuprodigy(ctx):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
         await bot.delete_message(message)
-    await bot.send_message(channel, "Fuck You Prodigy")
+    await bot.send_message(channel, "Fuck You ProdIgy")
 
 
 @bot.command(pass_context=True)
