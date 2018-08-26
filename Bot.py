@@ -62,17 +62,17 @@ async def on_ready():
 async def on_member_join(member):
     for server in bot.servers:
         for channel in server.channels:
-            if channel.id == "463785244772794370":
+            if channel.id == "463785244772794370" and member.server.name == "Nebula eSports":
                 w = channel
-    print("{} Has Joined".format(member))
-    embed=discord.Embed(title=str(member.name), color=0xfa9361)
-    embed.set_author(name="Welcome To Nebula:")
-    embed.set_thumbnail(url=member.avatar_url)
-    await bot.send_message(w,embed=embed)
-    role = discord.utils.get(member.server.roles, name="New")
-    role2 = discord.utils.get(member.server.roles, name="⋑-Members-⋐")
-    await bot.add_roles(member, role)
-    await bot.add_roles(member, role2)
+                print("{} Has Joined".format(member))
+                embed=discord.Embed(title=str(member.name), color=0xfa9361)
+                embed.set_author(name="Welcome To Nebula:")
+                embed.set_thumbnail(url=member.avatar_url)
+                await bot.send_message(w,embed=embed)
+                role = discord.utils.get(member.server.roles, name="New")
+                role2 = discord.utils.get(member.server.roles, name="⋑-Members-⋐")
+                await bot.add_roles(member, role)
+                await bot.add_roles(member, role2)
     
     
 @bot.command(pass_context=True)
