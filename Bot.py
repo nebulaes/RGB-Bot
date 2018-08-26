@@ -81,7 +81,7 @@ async def admin(ctx):
     server = ctx.message.server
     for role in server.roles:
         #print(role)
-        if "admin" in str(role) or "Admin" in str(role):
+                if "admin" in str(role) or "Admin" in str(role) or "MODS" in str(role) or "mods" in str(role) or "Mods" in str(role)or "Moderator" in str(role):
             adminRole = role
             pass
     for member in server.members:
