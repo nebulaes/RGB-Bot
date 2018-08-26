@@ -186,6 +186,8 @@ async def on_message(message):
         await bot.send_message(message.channel,"🥔🍟")
    if "prodigy" in str(message.content.lower()):
         await bot.send_message(message.channel, "Fuck You Prodigy")
+   else:
+        pass
     
    try:
         await bot.process_commands(message)
