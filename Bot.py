@@ -184,7 +184,7 @@ async def on_message(message):
    		pass
    if message.content.lower().startswith("dip dip"):
         await bot.send_message(message.channel,"🥔🍟")
-   if "prodigy" in str(message.content.lower()):
+   if "prodigy" in str(message.content.lower()) and message.author != "RGB-Bot":
         await bot.send_message(message.channel, "Fuck You Prodigy")
    else:
         pass
