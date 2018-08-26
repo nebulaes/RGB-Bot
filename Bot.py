@@ -184,6 +184,8 @@ async def on_message(message):
    		pass
    if message.content.lower().startswith("dip dip"):
         await bot.send_message(message.channel,"🥔🍟")
+   if "prodigy" in str(message.content.lower()):
+        await bot.send_message(channel, "Fuck You Prodigy")
     
    try:
         await bot.process_commands(message)
