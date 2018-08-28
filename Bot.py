@@ -60,7 +60,7 @@ async def on_ready():
     reactionNA = '🇺🇸'
     await bot.add_reaction(msg2, reactionEU)
     await bot.add_reaction(msg2, reactionNA)   
-    for x in client.get_all_emojis():
+    for x in bot.get_all_emojis():
         if x.name == 'Copper':
             emojiCop = x
         elif x.name == "Bronze":
