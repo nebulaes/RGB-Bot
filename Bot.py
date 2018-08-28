@@ -25,6 +25,9 @@ async def on_ready():
             elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
                 global r
                 r = channel
+            elif channel.id == "483801660930523146":
+                global ru
+                ru = channel
 
     h = int(time.strftime("%I"))
     m = str(time.strftime("%M"))
@@ -61,7 +64,7 @@ async def on_ready():
     await bot.add_reaction(msg2, reactionEU)
     await bot.add_reaction(msg2, reactionNA)   
     for x in bot.get_all_emojis():
-        if x.name == 'Copper':
+        if x.name == "Copper":
             emojiCop = x
         elif x.name == "Bronze":
             emojiBro = x
@@ -73,12 +76,24 @@ async def on_ready():
             emojiPla = x
         elif x.name == "Diamond":
             emojiDia = x
+        elif x.name == "C_":
+            emojiC = x
+        elif x.name == "B_":
+            emojiB = x
+        elif x.name == "S_":
+            emojiS = x
+        elif x.name == "G_":
+            emojiG = x
+        elif x.name == "P_":
+            emojiP = x
+        elif x.name == "D_":
+            emojiD = x
     
     async for message in bot.logs_from(r, limit=50):
         await bot.delete_message(message)
     embed=discord.Embed(title="Ranks")
     embed.add_field(name="Rank:", value="React With Appropriate Reaction To Add Role", inline=False)
-    print(r)
+
     msgRank = await bot.send_message(r, embed=embed)
     await bot.add_reaction(msgRank, emojiCop)
     await bot.add_reaction(msgRank, emojiBro)
@@ -86,40 +101,20 @@ async def on_ready():
     await bot.add_reaction(msgRank, emojiGol)
     await bot.add_reaction(msgRank, emojiPla)
     await bot.add_reaction(msgRank, emojiDia)
+
+    async for message in bot.logs_from(ru, limit=50):
+        await bot.delete_message(message)
+    embed=discord.Embed(title="Ranks")
+    embed.add_field(name="Rank:", value="React With Appropriate Reaction To Add Role", inline=False)
+    msgRankUS = await bot.send_message(ru, embed=embed)
+    await bot.add_reaction(msgRankUS, emojiC)
+    await bot.add_reaction(msgRankUS, emojiB)
+    await bot.add_reaction(msgRankUS, emojiS)
+    await bot.add_reaction(msgRankUS, emojiG)
+    await bot.add_reaction(msgRankUS, emojiP)
+    await bot.add_reaction(msgRankUS, emojiD)
     
-@bot.event
-async def on_reaction_remove(reaction, user):
-    for x in bot.get_all_emojis():
-        if x.name == 'Copper':
-            emojiCop = x
-        elif x.name == "Bronze":
-            emojiBro = x
-        elif x.name == "Silver":
-            emojiSil = x
-        elif x.name == "Gold":
-            emojiGol = x
-        elif x.name == "Plat":
-            emojiPla = x
-        elif x.name == "Diamond":
-            emojiDia = x
-    roleCop = discord.utils.get(user.server.roles, name="Copper")
-    roleBro = discord.utils.get(user.server.roles, name="Bronze")
-    roleSil = discord.utils.get(user.server.roles, name="Silver")
-    roleGol = discord.utils.get(user.server.roles, name="Gold")
-    rolePla = discord.utils.get(user.server.roles, name="Platinum")
-    roleDia = discord.utils.get(user.server.roles, name="Diamond")
-    if reaction.emoji == emojiCop and reaction.message.channel == r:
-        await bot.remove_roles(user, roleCop)
-    elif reaction.emoji == emojiBro and reaction.message.channel == r:
-        await bot.remove_roles(user, roleBro)
-    elif reaction.emoji == emojiSil and reaction.message.channel == r:
-        await bot.remove_roles(user, roleSil)
-    elif reaction.emoji == emojiGol and reaction.message.channel == r:
-        await bot.remove_roles(user, roleGol)
-    elif reaction.emoji == emojiPla and reaction.message.channel == r:
-        await bot.remove_roles(user, rolePla)
-    elif reaction.emoji == emojiDia and reaction.message.channel == r:
-        await bot.remove_roles(user, roleDia)
+    
     
 
 @bot.event
@@ -175,6 +170,18 @@ async def on_reaction_add(reaction, user):
             emojiPla = x
         elif x.name == "Diamond":
             emojiDia = x
+        elif x.name == "C_":
+            emojiC = x
+        elif x.name == "B_":
+            emojiB = x
+        elif x.name == "S_":
+            emojiS = x
+        elif x.name == "G_":
+            emojiG = x
+        elif x.name == "P_":
+            emojiP = x
+        elif x.name == "D_":
+            emojiD = x
     channel = reaction.message.channel
     role = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
     role2 = discord.utils.get(user.server.roles, name="New")
@@ -201,6 +208,19 @@ async def on_reaction_add(reaction, user):
     elif reaction.emoji == emojiDia and channel == r:
         await bot.add_roles(user, roleDia)
 
+    elif reaction.emoji == emojiC and channel == ru:
+        await bot.add_roles(user, roleCop)
+    elif reaction.emoji == emojiB and channel == ru:
+        await bot.add_roles(user, roleBro)
+    elif reaction.emoji == emojiS and channel == ru:
+        await bot.add_roles(user, roleSil)
+    elif reaction.emoji == emojiG and channel == ru:
+        await bot.add_roles(user, roleGol)
+    elif reaction.emoji == emojiP and channel == ru:
+        await bot.add_roles(user, rolePla)
+    elif reaction.emoji == emojiD and channel == ru:
+        await bot.add_roles(user, roleDia)
+
     elif reaction.emoji == '🎧' and channel == c:
         await bot.add_roles(user, roleDJ)
     elif reaction.emoji == '✅' and channel == c:
@@ -224,6 +244,65 @@ async def on_reaction_add(reaction, user):
         except Exception:
             pass
         
+@bot.event
+async def on_reaction_remove(reaction, user):
+    for x in bot.get_all_emojis():
+        if x.name == 'Copper':
+            emojiCop = x
+        elif x.name == "Bronze":
+            emojiBro = x
+        elif x.name == "Silver":
+            emojiSil = x
+        elif x.name == "Gold":
+            emojiGol = x
+        elif x.name == "Plat":
+            emojiPla = x
+        elif x.name == "Diamond":
+            emojiDia = x
+        elif x.name == "C_":
+            emojiC = x
+        elif x.name == "B_":
+            emojiB = x
+        elif x.name == "S_":
+            emojiS = x
+        elif x.name == "G_":
+            emojiG = x
+        elif x.name == "P_":
+            emojiP = x
+        elif x.name == "D_":
+            emojiD = x
+    roleCop = discord.utils.get(user.server.roles, name="Copper")
+    roleBro = discord.utils.get(user.server.roles, name="Bronze")
+    roleSil = discord.utils.get(user.server.roles, name="Silver")
+    roleGol = discord.utils.get(user.server.roles, name="Gold")
+    rolePla = discord.utils.get(user.server.roles, name="Platinum")
+    roleDia = discord.utils.get(user.server.roles, name="Diamond")
+    
+    if reaction.emoji == emojiCop and reaction.message.channel == r:
+        await bot.remove_roles(user, roleCop)
+    elif reaction.emoji == emojiBro and reaction.message.channel == r:
+        await bot.remove_roles(user, roleBro)
+    elif reaction.emoji == emojiSil and reaction.message.channel == r:
+        await bot.remove_roles(user, roleSil)
+    elif reaction.emoji == emojiGol and reaction.message.channel == r:
+        await bot.remove_roles(user, roleGol)
+    elif reaction.emoji == emojiPla and reaction.message.channel == r:
+        await bot.remove_roles(user, rolePla)
+    elif reaction.emoji == emojiDia and reaction.message.channel == r:
+        await bot.remove_roles(user, roleDia)
+    
+    elif reaction.emoji == emojiC and reaction.message.channel == ru:
+        await bot.remove_roles(user, roleCop)
+    elif reaction.emoji == emojiB and reaction.message.channel == ru:
+        await bot.remove_roles(user, roleBro)
+    elif reaction.emoji == emojiS and reaction.message.channel == ru:
+        await bot.remove_roles(user, roleSil)
+    elif reaction.emoji == emojiG and reaction.message.channel == ru:
+        await bot.remove_roles(user, roleGol)
+    elif reaction.emoji == emojiP and reaction.message.channel == ru:
+        await bot.remove_roles(user, rolePla)
+    elif reaction.emoji == emojiD and reaction.message.channel == ru:
+        await bot.remove_roles(user, roleDia)
 
 ##@client.command(pass_context=True)
 ##async def spam(ctx, name, x=5):
