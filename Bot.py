@@ -22,6 +22,9 @@ async def on_ready():
             elif channel.id == "463785244772794370":
                 global w
                 w = channel
+            elif channel.id == "483791168111509504":
+                global r
+                r = channel
 
     h = int(time.strftime("%I"))
     m = str(time.strftime("%M"))
@@ -57,6 +60,24 @@ async def on_ready():
     reactionNA = '🇺🇸'
     await bot.add_reaction(msg2, reactionEU)
     await bot.add_reaction(msg2, reactionNA)
+    emojiCop = get(bot.get_all_emojis(), name='Copper')
+    emojiBro = get(bot.get_all_emojis(), name='Bronze')
+    emojiSil = get(bot.get_all_emojis(), name='Silver')
+    emojiGol = get(bot.get_all_emojis(), name='Gold')
+    emojiPla = get(bot.get_all_emojis(), name='Plat')
+    emojiDia = get(bot.get_all_emojis(), name='Diamond')
+    embed=discord.Embed(title="Ranks")
+    embed.add_field(name="", value="React With Appropriate Reaction To Add Role", inline=False)
+    msgRank = await bot.send_message(r, embed=embed)
+    await bot.add_reaction(msgRank, emojiCop)
+    await bot.add_reaction(msgRank, emojiBro)
+    await bot.add_reaction(msgRank, emojiSil)
+    await bot.add_reaction(msgRank, emojiGol)
+    await bot.add_reaction(msgRank, emojiPla)
+    await bot.add_reaction(msgRank, emojiDia)
+    
+    
+    
 
 @bot.event
 async def on_member_join(member):
