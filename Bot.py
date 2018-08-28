@@ -22,7 +22,7 @@ async def on_ready():
             elif channel.id == "463785244772794370":
                 global w
                 w = channel
-            elif channel.id == "483791168111509504":
+            elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
                 global r
                 r = channel
 
@@ -76,7 +76,7 @@ async def on_ready():
     
     
     embed=discord.Embed(title="Ranks")
-    embed.add_field(name="", value="React With Appropriate Reaction To Add Role", inline=False)
+    embed.add_field(name=" ", value="React With Appropriate Reaction To Add Role", inline=False)
     msgRank = await bot.send_message(r, embed=embed)
     await bot.add_reaction(msgRank, emojiCop)
     await bot.add_reaction(msgRank, emojiBro)
