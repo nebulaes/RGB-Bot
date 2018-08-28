@@ -87,7 +87,39 @@ async def on_ready():
     await bot.add_reaction(msgRank, emojiPla)
     await bot.add_reaction(msgRank, emojiDia)
     
-    
+@bot.event
+async def on_reaction_remove(reaction, user):
+    for x in bot.get_all_emojis():
+        if x.name == 'Copper':
+            emojiCop = x
+        elif x.name == "Bronze":
+            emojiBro = x
+        elif x.name == "Silver":
+            emojiSil = x
+        elif x.name == "Gold":
+            emojiGol = x
+        elif x.name == "Plat":
+            emojiPla = x
+        elif x.name == "Diamond":
+            emojiDia = x
+    roleCop = discord.utils.get(user.server.roles, name="Copper")
+    roleBro = discord.utils.get(user.server.roles, name="Bronze")
+    roleSil = discord.utils.get(user.server.roles, name="Silver")
+    roleGol = discord.utils.get(user.server.roles, name="Gold")
+    rolePla = discord.utils.get(user.server.roles, name="Platinum")
+    roleDia = discord.utils.get(user.server.roles, name="Diamond")
+    if reaction.emoji == emojiCop and reaction.message.channel == r:
+        await bot.remove_roles(user, roleCop)
+    elif reaction.emoji == emojiBro and reaction.message.channel == r:
+        await bot.remove_roles(user, roleBro)
+    elif reaction.emoji == emojiSil and reaction.message.channel == r:
+        await bot.remove_roles(user, roleSil)
+    elif reaction.emoji == emojiGol and reaction.message.channel == r:
+        await bot.remove_roles(user, roleGol)
+    elif reaction.emoji == emojiPla and reaction.message.channel == r:
+        await bot.remove_roles(user, rolePla)
+    elif reaction.emoji == emojiDia and reaction.message.channel == r:
+        await bot.remove_roles(user, roleDia)
     
 
 @bot.event
