@@ -59,13 +59,22 @@ async def on_ready():
     reactionEU = '🇪🇺'
     reactionNA = '🇺🇸'
     await bot.add_reaction(msg2, reactionEU)
-    await bot.add_reaction(msg2, reactionNA)
-    emojiCop = get(bot.get_all_emojis(), name='Copper')
-    emojiBro = get(bot.get_all_emojis(), name='Bronze')
-    emojiSil = get(bot.get_all_emojis(), name='Silver')
-    emojiGol = get(bot.get_all_emojis(), name='Gold')
-    emojiPla = get(bot.get_all_emojis(), name='Plat')
-    emojiDia = get(bot.get_all_emojis(), name='Diamond')
+    await bot.add_reaction(msg2, reactionNA)   
+    for x in client.get_all_emojis():
+        if x.name == 'Copper':
+            emojiCop = x
+        elif x.name == "Bronze":
+            emojiBro = x
+        elif x.name == "Silver":
+            emojiSil = x
+        elif x.name == "Gold":
+            emojiGol = x
+        elif x.name == "Plat":
+            emojiPla = x
+        elif x.name == "Diamond":
+            emojiDia = x
+    
+    
     embed=discord.Embed(title="Ranks")
     embed.add_field(name="", value="React With Appropriate Reaction To Add Role", inline=False)
     msgRank = await bot.send_message(r, embed=embed)
