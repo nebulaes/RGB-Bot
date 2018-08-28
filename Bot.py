@@ -2,7 +2,7 @@ import discord, os
 from discord.ext import commands
 from discord.ext.commands import Bot
 import asyncio
-import time, json, ranks as data, requests
+import time, json, requests
 from discord.voice_client import VoiceClient
 
 bot=discord.Client()
@@ -74,9 +74,10 @@ async def on_ready():
         elif x.name == "Diamond":
             emojiDia = x
     
-    
+    async for message in bot.logs_from(r, limit=50):
+        await bot.delete_message(message)
     embed=discord.Embed(title="Ranks")
-    embed.add_field(name=" ", value="React With Appropriate Reaction To Add Role", inline=False)
+    embed.add_field(name="Rank:", value="React With Appropriate Reaction To Add Role", inline=False)
     print(r)
     msgRank = await bot.send_message(r, embed=embed)
     await bot.add_reaction(msgRank, emojiCop)
@@ -129,15 +130,48 @@ async def admin(ctx):
     
 @bot.event
 async def on_reaction_add(reaction, user):
+    for x in bot.get_all_emojis():
+        if x.name == 'Copper':
+            emojiCop = x
+        elif x.name == "Bronze":
+            emojiBro = x
+        elif x.name == "Silver":
+            emojiSil = x
+        elif x.name == "Gold":
+            emojiGol = x
+        elif x.name == "Plat":
+            emojiPla = x
+        elif x.name == "Diamond":
+            emojiDia = x
     channel = reaction.message.channel
     role = discord.utils.get(user.server.roles, name="⋑-Members-⋐")
     role2 = discord.utils.get(user.server.roles, name="New")
     roleEU = discord.utils.get(user.server.roles, name="EU")
     roleNA = discord.utils.get(user.server.roles, name="NA")
     roleDJ = discord.utils.get(user.server.roles, name="DJ")
-    if reaction.emoji == '🎧' and channel == c:
+    roleCop = discord.utils.get(user.server.roles, name="Copper")
+    roleBro = discord.utils.get(user.server.roles, name="Bronze")
+    roleSil = discord.utils.get(user.server.roles, name="Silver")
+    roleGol = discord.utils.get(user.server.roles, name="Gold")
+    rolePla = discord.utils.get(user.server.roles, name="Platinum")
+    roleDia = discord.utils.get(user.server.roles, name="Diamond")
+
+    if reaction.emoji == emojiCop and channel == r:
+        await bot.add_roles(user, roleCop)
+    elif reaction.emoji == emojiBro and channel == r:
+        await bot.add_roles(user, roleBro)
+    elif reaction.emoji == emojiSil and channel == r:
+        await bot.add_roles(user, roleSil)
+    elif reaction.emoji == emojiGol and channel == r:
+        await bot.add_roles(user, roleGol)
+    elif reaction.emoji == emojiPla and channel == r:
+        await bot.add_roles(user, rolePla)
+    elif reaction.emoji == emojiDia and channel == r:
+        await bot.add_roles(user, roleDia)
+
+    elif reaction.emoji == '🎧' and channel == c:
         await bot.add_roles(user, roleDJ)
-    if reaction.emoji == '✅' and channel == c:
+    elif reaction.emoji == '✅' and channel == c:
         await bot.add_roles(user, role)
         try:
             await bot.remove_roles(user, role2)
