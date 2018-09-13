@@ -143,7 +143,7 @@ async def admin(ctx):
         if "admin" in str(role) or "Admin" in str(role) or "MODS" in str(role) or "mods" in str(role) or "Mods" in str(role)or "Moderator" in str(role):
             adminRole = role
             pass
-        if "♕-Owners-♕" == str(role):
+        if "♕-Owners-♕" == role.name:
             ownerRole = role
             pass
     for member in server.members:
