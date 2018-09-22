@@ -336,7 +336,7 @@ async def banner(ctx):
     await bot.send_file(channel,"NebulaRender3.jpg")
 
 @bot.command(pass_context=True)
-async def clear(ctx, amount=50):
+async def clear(ctx, amount=5):
     channel = ctx.message.channel
     messages = []
     async for message in bot.logs_from(channel, limit=int(amount)+1):
