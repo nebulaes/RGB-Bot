@@ -385,6 +385,13 @@ async def hmm(ctx):
     await bot.send_message(channel, "HmmMmMMMmmmMmMmMMMmmmMm")
     
 @bot.command(pass_context=True)
+async def fu(ctx, m = discord.member):
+    channel = ctx.message.channel
+    async for message in bot.logs_from(channel, limit=1):
+        await bot.delete_message(message)
+    await bot.send_message(channel, "Fuck You {}".format(m))
+    
+@bot.command(pass_context=True)
 async def fuprodigy(ctx):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
