@@ -369,6 +369,11 @@ async def on_message(message):
         await bot.send_message(message.channel,"🥔🍟")
    if "prodigy" in str(message.content.lower()):
         await bot.send_message(message.channel, "Fuck You ᴘʀᴏᴅɪɢʏ")
+   if "fuck you rgb bot" in str(message.content.lower()):
+        await bot.send_message(message.channel, "NO U")
+   if "fuck" in str(message.content.lower()) and "fuck" in str(message.content.lower()) and "bot" in str(message.content.lower()):
+        await bot.send_message(message.channel, "NO U")
+        
    else:
         pass
     
