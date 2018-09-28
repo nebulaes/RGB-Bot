@@ -288,21 +288,25 @@ async def on_reaction_remove(reaction, user):
 
 @bot.command(pass_context=True)
 async def timeout(ctx, m : discord.Member, i : int = 30):
-    server = ctx.message.server
-    for role in server.roles:
-        #print(role)
-        if "admin" in str(role) or "Admin" in str(role) or "MODS" in str(role) or "mods" in str(role) or "Mods" in str(role) or "Moderator" in str(role):
-            adminRole = role
+    try:
+        server = ctx.message.server
+        for role in server.roles:
+            #print(role)
+            if "admin" in str(role) or "Admin" in str(role) or "MODS" in str(role) or "mods" in str(role) or "Mods" in str(role) or "Moderator" in str(role):
+                adminRole = role
+                pass
+        if adminRole in ctx.message.author.roles:
+            if i >= 300:
+                await bot.say("Cannot Timeout Above 300 Seconds")
+                pass
+            await bot.server_voice_state(m, mute=True)
+            await count(i)
+            await bot.server_voice_state(m, mute=False)
+        else:
+            await bot.say("You Must Be An Admin To Use This Command!")
             pass
-    if adminRole in ctx.message.author.roles:
-        if i >= 300:
-            await bot.say("Cannot Timeout Above 300 Seconds")
-            pass
-        await bot.server_voice_state(m, mute=True)
-        await count(i)
-        await bot.server_voice_state(m, mute=False)
-    else:
-        await bot.say("You Must Be An Admin To Use This Command!")
+    except Exception:
+        await bot.say("Error Has Occured")
         pass
 
 async def count(m):
