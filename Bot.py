@@ -387,7 +387,10 @@ async def fu(ctx, m = discord.member):
 async def nou(ctx):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
-        await bot.delete_message(message)
+        try:
+            await bot.delete_message(message)
+        except Exception:
+            pass
     await bot.send_message(channel, "NO U")
     
 @bot.command(pass_context=True)
