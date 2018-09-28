@@ -297,11 +297,11 @@ async def timeout(ctx, m : discord.Member, i : int = 30):
                 adminRole = role
                 pass
         if adminRole in ctx.message.author.roles:
-            if i >= 300:
+            if int(i) >= 300:
                 await bot.say("Cannot Timeout Above 300 Seconds")
                 pass
             await bot.server_voice_state(m, mute=True)
-            await count(i)
+            await count(int(i))
             await bot.server_voice_state(m, mute=False)
         else:
             await bot.say("You Must Be An Admin To Use This Command!")
@@ -315,6 +315,7 @@ async def count(m):
     while seconds > 0:
         seconds -= 1
         await asyncio.sleep(1)
+        print(seconds)
 
 
 
