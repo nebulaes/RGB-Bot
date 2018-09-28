@@ -286,6 +286,32 @@ async def on_reaction_remove(reaction, user):
 ##            await client.delete_message(message)
 ##        x -= 1
 
+@bot.command(pass_context=True)
+async def timeout(ctx, m : discord.Member, i : int = 30):
+    server = ctx.message.server
+    for role in server.roles:
+        #print(role)
+        if "admin" in str(role) or "Admin" in str(role) or "MODS" in str(role) or "mods" in str(role) or "Mods" in str(role) or "Moderator" in str(role):
+            adminRole = role
+            pass
+    if adminRole in ctx.message.author.roles:
+        if i >= 300:
+            print("Cannot Timeout Above 300 Seconds")
+            pass
+        await bot.server_voice_state(m, mute=True)
+        await count(i)
+        await bot.server_voice_state(m, mute=False)
+    else:
+        print("You Must Be An Admin To Use This Command!")
+        pass
+
+async def count(m):
+    seconds = m
+    while seconds > 0:
+        seconds -= 1
+        await asyncio.sleep(1)
+
+
 
 @bot.command(pass_context=True)
 async def banner(ctx):
