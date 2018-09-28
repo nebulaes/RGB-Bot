@@ -399,6 +399,7 @@ async def fu(ctx, m = discord.member):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
         await bot.delete_message(message)
+    print(m)
     await bot.send_message(channel, "Fuck You {}".format(m))
     
     
