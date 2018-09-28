@@ -25,9 +25,6 @@ async def on_ready():
             elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
                 global r
                 r = channel
-            elif channel.id == "483801660930523146":
-                global ru
-                ru = channel
 
     h = int(time.strftime("%I"))
     m = str(time.strftime("%M"))
@@ -102,17 +99,6 @@ async def on_ready():
     await bot.add_reaction(msgRank, emojiPla)
     await bot.add_reaction(msgRank, emojiDia)
 
-    async for message in bot.logs_from(ru, limit=50):
-        await bot.delete_message(message)
-    embed=discord.Embed(title="Ranks")
-    embed.add_field(name="Rank:", value="React With Appropriate Reaction To Add Role", inline=False)
-    msgRankUS = await bot.send_message(ru, embed=embed)
-    await bot.add_reaction(msgRankUS, emojiC)
-    await bot.add_reaction(msgRankUS, emojiB)
-    await bot.add_reaction(msgRankUS, emojiS)
-    await bot.add_reaction(msgRankUS, emojiG)
-    await bot.add_reaction(msgRankUS, emojiP)
-    await bot.add_reaction(msgRankUS, emojiD)
     
     
     
