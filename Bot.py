@@ -289,7 +289,6 @@ async def on_reaction_remove(reaction, user):
 @bot.command(pass_context=True)
 async def timeout(ctx, m : discord.Member, i : int = 30):
     try:
-        print(i)
         server = ctx.message.server
         for role in server.roles:
             #print(role)
@@ -315,7 +314,7 @@ async def count(m):
     while seconds > 0:
         seconds -= 1
         await asyncio.sleep(1)
-        print(seconds)
+       
 
 
 
