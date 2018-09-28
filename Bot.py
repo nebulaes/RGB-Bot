@@ -73,18 +73,6 @@ async def on_ready():
             emojiPla = x
         elif x.name == "Diamond":
             emojiDia = x
-        elif x.name == "C_":
-            emojiC = x
-        elif x.name == "B_":
-            emojiB = x
-        elif x.name == "S_":
-            emojiS = x
-        elif x.name == "G_":
-            emojiG = x
-        elif x.name == "P_":
-            emojiP = x
-        elif x.name == "D_":
-            emojiD = x
     
     async for message in bot.logs_from(r, limit=50):
         await bot.delete_message(message)
