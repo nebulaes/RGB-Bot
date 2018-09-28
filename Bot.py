@@ -289,6 +289,7 @@ async def on_reaction_remove(reaction, user):
 @bot.command(pass_context=True)
 async def timeout(ctx, m : discord.Member, i : int = 30):
     try:
+        print(i)
         server = ctx.message.server
         for role in server.roles:
             #print(role)
