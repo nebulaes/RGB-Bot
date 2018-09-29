@@ -115,16 +115,16 @@ async def on_member_join(member):
             await bot.add_roles(member, role2)
 
                 
-                t = 0
-                b = 0
-                for i in member.server.members:
-                    t += 1
-                    if i.bot == True:
-                        b +=1
-                h = t - b
-                await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
-                await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
-                await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
+            t = 0
+            b = 0
+            for i in member.server.members:
+                t += 1
+                if i.bot == True:
+                    b +=1
+            h = t - b
+            await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
+            await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
+            await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
                 
                 
 @bot.event
