@@ -140,7 +140,7 @@ async def memberCount(ctx):
                 
             t = 0
             b = 0
-            for i in member.server.members:
+            for i in ctx.message.server.members:
                 t += 1
                 if i.bot == True:
                     b +=1
