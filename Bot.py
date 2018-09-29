@@ -105,51 +105,50 @@ async def on_member_join(member):
         elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports":
             tc = channel
 
-            print("{} Has Joined".format(member))
-            embed=discord.Embed(title=str(member.name), color=0xfa9361)
-            embed.set_author(name="Welcome To Nebula:")
-            embed.set_thumbnail(url=member.avatar_url)
-            await bot.send_message(w,embed=embed)
-            role = discord.utils.get(member.server.roles, name="New")
-            role2 = discord.utils.get(member.server.roles, name="⋑-Members-⋐")
-            await bot.add_roles(member, role)
-            await bot.add_roles(member, role2)
+    print("{} Has Joined".format(member))
+    embed=discord.Embed(title=str(member.name), color=0xfa9361)
+    embed.set_author(name="Welcome To Nebula:")
+    embed.set_thumbnail(url=member.avatar_url)
+    await bot.send_message(w,embed=embed)
+    role = discord.utils.get(member.server.roles, name="New")
+    role2 = discord.utils.get(member.server.roles, name="⋑-Members-⋐")
+    await bot.add_roles(member, role)
+    await bot.add_roles(member, role2)
 
-                
-            t = 0
-            b = 0
-            for i in member.server.members:
-                t += 1
-                if i.bot == True:
-                    b +=1
-            h = t - b
-            await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
-            await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
-            await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
+
+    t = 0
+    b = 0
+    for i in member.server.members:
+        t += 1
+        if i.bot == True:
+            b +=1
+    h = t - b
+    await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
+    await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
+    await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
                 
                 
 @bot.event
 async def on_member_remove(member):
-    for server in bot.servers:
-        for channel in server.channels:
-            h = 0
-            if channel.id == "495362269736075273" and member.server.name == "Nebula eSports":
-                zc = channel
-            elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports":
-                bc = channel
-            elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports":
-                tc = channel
-                
-                t = 0
-                b = 0
-                for i in member.server.members:
-                    t += 1
-                    if i.bot == True:
-                        b +=1
-                h = t - b
-                await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
-                await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
-                await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
+    for channel in member.server.channels:
+        h = 0
+        if channel.id == "495362269736075273" and member.server.name == "Nebula eSports":
+            zc = channel
+        elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports":
+            bc = channel
+        elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports":
+            tc = channel
+
+    t = 0
+    b = 0
+    for i in member.server.members:
+        t += 1
+        if i.bot == True:
+            b +=1
+    h = t - b
+    await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
+    await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
+    await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
 
                 
 @bot.command(pass_context=True)
