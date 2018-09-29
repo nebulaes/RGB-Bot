@@ -94,6 +94,7 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     for channel in member.server.channels:
+        print(channel)
         h = 0
         if channel.id == "463785244772794370" and member.server.name == "Nebula eSports":
             w = channel
