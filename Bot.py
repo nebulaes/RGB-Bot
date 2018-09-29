@@ -123,9 +123,9 @@ async def on_member_join(member):
                     if i.bot == True:
                         b +=1
                 h = t - b
-                await bot.edit_channel(channel = tc, name="╠-total-﹝{}﹞".format(t))
+                await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
                 await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
-                await bot.edit_channel(channel = bc, name="╠-bots-﹝{}﹞".format(b))
+                await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
 
 @bot.command(pass_context=True)
 async def memberCount(ctx):
@@ -137,6 +137,17 @@ async def memberCount(ctx):
                 bc = channel
             elif channel.id == "495367099024277515":
                 tc = channel
+                
+            t = 0
+            b = 0
+            for i in member.server.members:
+                t += 1
+                if i.bot == True:
+                    b +=1
+            h = t - b
+            await bot.edit_channel(channel = tc, name="╔-total-﹝{}﹞".format(t))
+            await bot.edit_channel(channel = zc, name="╠-members-﹝{}﹞".format(h))
+            await bot.edit_channel(channel = bc, name="╚-bots-﹝{}﹞".format(b))
     
     
 @bot.command(pass_context=True)
