@@ -128,7 +128,7 @@ async def on_member_join(member):
                 
                 
 @bot.event
-async def on_member_leave(member):
+async def on_member_remove(member):
     for server in bot.servers:
         for channel in server.channels:
             h = 0
