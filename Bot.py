@@ -299,9 +299,10 @@ async def timeout(ctx, m : discord.Member, i : int = 30):
             if int(i) >= 300:
                 await bot.say("Cannot Timeout Above 300 Seconds")
                 pass
-            await bot.server_voice_state(m, mute=True)
-            await count(int(i))
-            await bot.server_voice_state(m, mute=False)
+            else:
+                await bot.server_voice_state(m, mute=True)
+                await count(int(i))
+                await bot.server_voice_state(m, mute=False)
         else:
             await bot.say("You Must Be An Admin To Use This Command!")
             pass
@@ -357,8 +358,6 @@ async def on_message(message):
    		pass
    if message.content.lower().startswith("dip dip"):
         await bot.send_message(message.channel,"🥔🍟")
-   if "prodigy" in str(message.content.lower()):
-        await bot.send_message(message.channel, "Fuck You ᴘʀᴏᴅɪɢʏ")
    if "fuck you rgb bot" in str(message.content.lower()):
         await bot.send_message(message.channel, "NO U")
    if "fuck" in str(message.content.lower()) and "fuck" in str(message.content.lower()) and "bot" in str(message.content.lower()):
@@ -397,13 +396,6 @@ async def nou(ctx):
         except Exception:
             pass
     await bot.send_message(channel, "NO U")
-    
-@bot.command(pass_context=True)
-async def fuprodigy(ctx):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-        await bot.delete_message(message)
-    await bot.send_message(channel, "Fuck You ProdIgy")
 
 
 @bot.command(pass_context=True)
