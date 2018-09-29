@@ -129,14 +129,13 @@ async def on_member_join(member):
 
 @bot.command(pass_context=True)
 async def memberCount(ctx):
-    for server in bot.servers:
-        for channel in server.channels:
-            if channel.id == "495362269736075273":
-                zc = channel
-            elif channel.id == "495363675830616073":
-                bc = channel
-            elif channel.id == "495367099024277515":
-                tc = channel
+    for channel in ctx.message.server.channels:
+        if channel.id == "495362269736075273":
+            zc = channel
+        elif channel.id == "495363675830616073":
+            bc = channel
+        elif channel.id == "495367099024277515":
+            tc = channel
                 
             t = 0
             b = 0
