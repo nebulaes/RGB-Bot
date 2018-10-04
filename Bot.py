@@ -361,6 +361,13 @@ async def banner(ctx):
     await bot.send_file(channel,"NebulaRender3.jpg")
 
 @bot.command(pass_context=True)
+async def reverse(ctx):
+    channel = ctx.message.channel
+    async for message in bot.logs_from(channel, limit=1):
+            await bot.delete_message(message)
+    await bot.send_file(channel,"Reverse.png")
+    
+@bot.command(pass_context=True)
 async def clear(ctx, amount=5):
     channel = ctx.message.channel
     messages = []
@@ -438,7 +445,7 @@ async def rules(ctx):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
         await bot.delete_message(message)
-    msg = await bot.say("RULES \n -No Toxicity \n -No Spamming \n -No Posting DMs \n -No Racism \n -No Posting or using Faces (Even Blurred) Without Permission \n -If You Join A Call And Are Asked To Mute Your Mic, Mute It \n -If Moved Out A Chat, Don't Move Back \n -Respect All Members \n -Respect Admins And Listen To Them")
+    msg = await bot.say("RULES \n -No Toxicity \n -No Spamming \n -No Posting DMs \n -No Racism \n -No Posting or using Faces (Even Blurred) Without Permission \n -If You Join A Call And Are Asked To Mute Your Mic, Mute It \n -If Moved Out A Chat, Don't Move Back \n -Respect All Members \n -Respect Admins And Listen To Them \n -No NSFW")
     print(msg)
 
 async def timeloop():
