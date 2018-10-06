@@ -368,6 +368,13 @@ async def reverse(ctx):
     await bot.send_file(channel,"Reverse.png")
     
 @bot.command(pass_context=True)
+async def wut(ctx):
+    channel = ctx.message.channel
+    async for message in bot.logs_from(channel, limit=1):
+            await bot.delete_message(message)
+    await bot.send_file(channel,"Wut.jpg")
+    
+@bot.command(pass_context=True)
 async def clear(ctx, amount=5):
     channel = ctx.message.channel
     messages = []
