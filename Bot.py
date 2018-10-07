@@ -368,6 +368,20 @@ async def reverse(ctx):
     await bot.send_file(channel,"Reverse.png")
     
 @bot.command(pass_context=True)
+async def doot(ctx):
+    channel = ctx.message.channel
+    async for message in bot.logs_from(channel, limit=1):
+            await bot.delete_message(message)
+    await bot.send_file(channel,"Doot.gif")
+    
+@bot.command(pass_context=True)
+async def spook(ctx):
+    channel = ctx.message.channel
+    async for message in bot.logs_from(channel, limit=1):
+            await bot.delete_message(message)
+    await bot.send_file(channel,"Spook.gif")
+    
+@bot.command(pass_context=True)
 async def wut(ctx):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
