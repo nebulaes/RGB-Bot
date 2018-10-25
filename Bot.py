@@ -338,7 +338,7 @@ async def timeout(ctx, m : discord.Member, i : int = 30):
                 await count(int(i))
                 await bot.server_voice_state(m, mute=False)
                 async for message in bot.logs_from(channel, limit=1):
-                await bot.delete_message(message)
+                    await bot.delete_message(message)
         else:
             await bot.say("You Must Be An Admin To Use This Command!")
             pass
