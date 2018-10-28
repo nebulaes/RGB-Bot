@@ -501,6 +501,7 @@ async def logo(ctx, colour = "GREY", flag : str = "NONE", background : bool = Fa
         background = Image.open(r"Red.png")
     elif b == True:
         print("Tuple")
+        colour = tuple(colour)
         img = Image.open(r"Mask.png")
 
         black = 0,0,0
@@ -509,7 +510,7 @@ async def logo(ctx, colour = "GREY", flag : str = "NONE", background : bool = Fa
 
         background = Image.open(r"Grey.png")
 
-        ImageOps.colorize(grayscale, black, tuple(colour)).save(r"Colour.png","PNG")
+        ImageOps.colorize(grayscale, black, colour).save(r"Colour.png","PNG")
 
         foreground = Image.open(r"Colour.png")
 
