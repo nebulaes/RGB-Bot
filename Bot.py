@@ -471,6 +471,75 @@ async def rules(ctx):
     msg = await bot.say("RULES \n -No Toxicity \n -No Spamming \n -No Posting DMs \n -No Racism \n -No Posting or using Faces (Even Blurred) Without Permission \n -If You Join A Call And Are Asked To Mute Your Mic, Mute It \n -If Moved Out A Chat, Don't Move Back \n -Respect All Members \n -Respect Admins And Listen To Them \n -No NSFW")
     print(msg)
 
+@bot.command(pass_context=True)
+async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : bool = False):
+    channel = ctx.message.channel
+    colour = colour.upper()
+    flag = flag.upper()
+
+    if colour == "BLUE":
+        background = Image.open(r"Blue.png")
+    elif colour == "GOLD":
+        background = Image.open(r"Gold.png")
+    elif colour == "GREEN":
+        background = Image.open(r"Green.png")
+    elif colour == "ORANGE":
+        background = Image.open(r"Orange.png")
+    elif colour == "PURPLE":
+        background = Image.open(r"Purple.png")
+    elif colour == "RED":
+        background = Image.open(r"Red.png")
+    else:
+        colour = "GREY"
+        background = Image.open(r"Grey.png")
+
+    if flag != "NONE":
+        if flag == "AUSTRIA":
+            foreground = Image.open(r"Austria.png")
+        elif flag == "BELGIUM":
+            foreground = Image.open(r"Belgium.png")
+        elif flag == "FINLAND":
+            foreground = Image.open(r"Finland.png")
+        elif flag == "FRANCE":
+            foreground = Image.open(r"France.png")
+        elif flag == "GERMANY":
+            foreground = Image.open(r"Germany.png")
+        elif flag == "GREECE":
+            foreground = Image.open(r"Greece.png")
+        elif flag == "HUNGARY":
+            foreground = Image.open(r"Hungary.png")
+        elif flag == "IRELAND":
+            foreground = Image.open(r"Ireland.png")
+        elif flag == "NETHERLANDS":
+            foreground = Image.open(r"Netherlands.png")
+        elif flag == "ROMANIA":
+            foreground = Image.open(r"Romania.png")
+        elif flag == "SLOVENIA":
+            foreground = Image.open(r"Slovenia.png")
+        elif flag == "SWEDEN":
+            foreground = Image.open(r"Sweden.png")
+        elif flag == "UK" or flag == "BRITAIN" or flag == "ENGLAND":
+            foreground = Image.open(r"UK.png")
+        elif flag == "USA" or flag == "AMERICA":
+            foreground = Image.open(r"USA.png")
+    else:
+        try:
+            file = open("Flag.txt","a+")
+            file.write(flag + "/n")
+            file.close
+        except Exception:
+            pass
+
+    foreground.paste(foreground, (0, 0), foreground)
+    background.paste(background, (0, 0), background)
+    background.show()
+    background.paste(foreground, (0, 0), foreground)
+
+    background.save(r"New.png", "PNG")
+    background.show()
+    await bot.send_file(channel,r"New.png")
+
+    
 async def timeloop():
     await bot.wait_until_ready()
     while not bot.is_closed:
