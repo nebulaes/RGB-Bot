@@ -505,8 +505,6 @@ async def logo(ctx, colour = "GREY", flag : str = "NONE", background : bool = Fa
 
         black = 0,0,0
 
-        colour = 150, 5, 255
-
         grayscale = ImageOps.grayscale(img)
 
         background = Image.open(r"Grey.png")
