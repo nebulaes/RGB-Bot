@@ -5,7 +5,7 @@ import asyncio
 import time, json, requests
 from discord.voice_client import VoiceClient
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 bot=discord.Client()
 bot = commands.Bot(command_prefix="!")
