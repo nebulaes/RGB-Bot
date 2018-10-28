@@ -499,7 +499,7 @@ async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : boo
         background = Image.open(r"Purple.png")
     elif colour == "RED":
         background = Image.open(r"Red.png")
-    elif isInstance(colour, tuple) == True:
+    elif isinstance(colour, tuple) == True:
         print("Tuple")
         img = Image.open(r"Mask.png")
 
