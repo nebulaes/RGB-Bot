@@ -200,6 +200,14 @@ async def admin(ctx):
         embed.add_field(name="{}.".format(x+1), value=str(admins[x]), inline=True)
     await bot.say(embed=embed)
     
+@bot.command(pass_context=True)
+async def logomaker(ctx):
+    embed=discord.Embed(title="RGB-BOT")
+    embed.set_author(name="LOGO MAKER")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/259028945104666637/505841202487230490/TransparentEmoji.png")
+    embed.add_field(name="SUPPORTED COLOURS", value="BLUE, GOLD, GREEN, GREY, ORANGE, PURPLE, RED", inline=True)
+    embed.add_field(name="SUPPORTED FLAGS", value="AUSTRIA, BELGIUM, FINLAND, FRANCE, GERMANY, GREECE, HUNGARY, IRELAND, NETHERLANDS, ROMANIA, SLOVENIA, SWEDEN, UK, USA", inline=True)
+    await bot.say(embed=embed)
     
 @bot.event
 async def on_reaction_add(reaction, user):
