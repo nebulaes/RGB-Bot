@@ -486,7 +486,7 @@ async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : boo
     channel = ctx.message.channel
     colour = colour.upper()
     flag = flag.upper()
-
+    b = isinstance(tuple(colour), tuple)
     if colour == "BLUE":
         background = Image.open(r"Blue.png")
     elif colour == "GOLD":
@@ -499,7 +499,7 @@ async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : boo
         background = Image.open(r"Purple.png")
     elif colour == "RED":
         background = Image.open(r"Red.png")
-    elif isinstance(colour, tuple) == True:
+    elif b == True:
         print("Tuple")
         img = Image.open(r"Mask.png")
 
