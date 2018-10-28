@@ -499,6 +499,23 @@ async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : boo
         background = Image.open(r"Purple.png")
     elif colour == "RED":
         background = Image.open(r"Red.png")
+    elif colour == tuple:
+        img = Image.open(r"Mask.png")
+
+        black = 0,0,0
+
+        colour = 150, 5, 255
+
+        grayscale = ImageOps.grayscale(img)
+
+        background = Image.open(r"Grey.png")
+
+        ImageOps.colorize(grayscale, black, colour).save(r"Colour.png","PNG")
+
+        foreground = Image.open(r"Colour.png")
+
+        background.paste(foreground, (0, 0), img)
+        
     else:
         colour = "GREY"
         background = Image.open(r"Grey.png")
