@@ -499,7 +499,8 @@ async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : boo
         background = Image.open(r"Purple.png")
     elif colour == "RED":
         background = Image.open(r"Red.png")
-    elif colour == tuple:
+    elif isInstance(colour, tuple) == True:
+        print("Tuple")
         img = Image.open(r"Mask.png")
 
         black = 0,0,0
@@ -562,7 +563,6 @@ async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : boo
     background.paste(foreground, (0, 0), foreground)
 
     background.save(r"New.png", "PNG")
-    background.show()
     await bot.send_file(channel,r"New.png")
 
     
