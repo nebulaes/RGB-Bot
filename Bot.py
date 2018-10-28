@@ -5,6 +5,8 @@ import asyncio
 import time, json, requests
 from discord.voice_client import VoiceClient
 
+from PIL import Image
+
 bot=discord.Client()
 bot = commands.Bot(command_prefix="!")
 
@@ -545,7 +547,7 @@ async def timeloop():
     while not bot.is_closed:
         h = int(time.strftime("%I"))
         m = str(time.strftime("%M"))
-        time2 = (str(h+1)+":"+m+" BST")
+        time2 = (str(h)+":"+m+" GMT")
         await bot.change_presence(game=discord.Game(name=time2, type=3))
         await asyncio.sleep(5)
 
