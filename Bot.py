@@ -534,7 +534,6 @@ async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : boo
 
     foreground.paste(foreground, (0, 0), foreground)
     background.paste(background, (0, 0), background)
-    background.show()
     background.paste(foreground, (0, 0), foreground)
 
     background.save(r"New.png", "PNG")
