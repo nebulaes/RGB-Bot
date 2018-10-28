@@ -564,7 +564,70 @@ async def logo(ctx, colour = "GREY", flag : str = "NONE", background : bool = Fa
     background.save(r"New.png", "PNG")
     await bot.send_file(channel,r"New.png")
 
+@bot.command(pass_context=True)
+async def logoc(ctx, c1 : int = 0, c2 : int = 0, c3 : int = 0, flag : str = "NONE"):
+
+    channel = ctx.message.channel
+    flag = flag.upper()
     
+    img = Image.open(r"Mask.png")
+
+    colour = c1, c2, c3
+
+    black = 0,0,0
+
+    grayscale = ImageOps.grayscale(img)
+
+    background = Image.open(r"Grey.png")
+
+    ImageOps.colorize(grayscale, black, colour).save(r"Colour.png","PNG")
+
+    foreground = Image.open(r"Colour.png")
+
+    background.paste(foreground, (0, 0), img)
+
+    if flag != "NONE":
+        if flag == "AUSTRIA":
+            foreground = Image.open(r"Austria.png")
+        elif flag == "BELGIUM":
+            foreground = Image.open(r"Belgium.png")
+        elif flag == "FINLAND":
+            foreground = Image.open(r"Finland.png")
+        elif flag == "FRANCE":
+            foreground = Image.open(r"France.png")
+        elif flag == "GERMANY":
+            foreground = Image.open(r"Germany.png")
+        elif flag == "GREECE":
+            foreground = Image.open(r"Greece.png")
+        elif flag == "HUNGARY":
+            foreground = Image.open(r"Hungary.png")
+        elif flag == "IRELAND":
+            foreground = Image.open(r"Ireland.png")
+        elif flag == "NETHERLANDS":
+            foreground = Image.open(r"Netherlands.png")
+        elif flag == "ROMANIA":
+            foreground = Image.open(r"Romania.png")
+        elif flag == "SLOVENIA":
+            foreground = Image.open(r"Slovenia.png")
+        elif flag == "SWEDEN":
+            foreground = Image.open(r"Sweden.png")
+        elif flag == "UK" or flag == "BRITAIN" or flag == "ENGLAND":
+            foreground = Image.open(r"UK.png")
+        elif flag == "USA" or flag == "AMERICA":
+            foreground = Image.open(r"USA.png")
+        else:
+            pass
+
+    try:
+        foreground.paste(foreground, (0, 0), foreground)
+        background.paste(background, (0, 0), background)
+        background.paste(foreground, (0, 0), foreground)
+    except Exception:
+        pass
+
+    background.save(r"New.png", "PNG")
+    await bot.send_file(channel,r"New.png") 
+   
 async def timeloop():
     await bot.wait_until_ready()
     while not bot.is_closed:
