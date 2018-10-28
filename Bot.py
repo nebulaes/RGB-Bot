@@ -482,7 +482,7 @@ async def rules(ctx):
     print(msg)
 
 @bot.command(pass_context=True)
-async def logo(ctx, colour : str = "GREY", flag : str = "NONE", background : bool = False):
+async def logo(ctx, colour = "GREY", flag : str = "NONE", background : bool = False):
     channel = ctx.message.channel
     colour = colour.upper()
     flag = flag.upper()
