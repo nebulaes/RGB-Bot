@@ -102,11 +102,11 @@ async def on_member_join(member):
         h = 0
         if channel.id == "463785244772794370"or channel.name == "╔-welcome":
             w=channel
-        if channel.id == "495362269736075273" and member.server.name == "Nebula eSports":
+        if channel.id == "495362269736075273" and member.server.name == "Nebula eSports Community":
             zc = channel
-        elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports":
+        elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports Community":
             bc = channel
-        elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports":
+        elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports Community":
             tc = channel
 
     print("{} Has Joined".format(member))
@@ -136,11 +136,11 @@ async def on_member_join(member):
 async def on_member_remove(member):
     for channel in member.server.channels:
         h = 0
-        if channel.id == "495362269736075273" and member.server.name == "Nebula eSports":
+        if channel.id == "495362269736075273" and member.server.name == "Nebula eSports Community":
             zc = channel
-        elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports":
+        elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports Community":
             bc = channel
-        elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports":
+        elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports Community":
             tc = channel
 
     t = 0
