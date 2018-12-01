@@ -310,7 +310,8 @@ async def on_reaction_remove(reaction, user):
         roleGol = discord.utils.get(user.server.roles, name="Gold")
         rolePla = discord.utils.get(user.server.roles, name="Platinum")
         roleDia = discord.utils.get(user.server.roles, name="Diamond")
-
+        roleRanked = discord.utils.get(user.server.roles, name="Ranked")
+        
         if reaction.emoji == emojiCop and reaction.message.channel == r:
             await bot.remove_roles(user, roleCop)
         elif reaction.emoji == emojiBro and reaction.message.channel == r:
