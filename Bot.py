@@ -323,7 +323,7 @@ async def on_reaction_remove(reaction, user):
             await bot.remove_roles(user, rolePla)
         elif reaction.emoji == emojiDia and reaction.message.channel == r:
             await bot.remove_roles(user, roleDia)
-        elif reaction.emoji == '✅' and channel == b:
+        elif reaction.emoji == '✅' and reaction.message.channel == b:
             await bot.remove_roles(user, roleRanked)
 
 ##@client.command(pass_context=True)
