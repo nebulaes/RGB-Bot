@@ -324,7 +324,7 @@ async def on_reaction_remove(reaction, user):
         elif reaction.emoji == emojiDia and reaction.message.channel == r:
             await bot.remove_roles(user, roleDia)
         elif reaction.emoji == '✅' and channel == b:
-            await bot.add_roles(user, roleRanked)
+            await bot.remove_roles(user, roleRanked)
 
 ##@client.command(pass_context=True)
 ##async def spam(ctx, name, x=5):
