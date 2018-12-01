@@ -63,7 +63,13 @@ async def on_ready():
     reactionEU = '🇪🇺'
     reactionNA = '🇺🇸'
     await bot.add_reaction(msg2, reactionEU)
-    await bot.add_reaction(msg2, reactionNA)   
+    await bot.add_reaction(msg2, reactionNA)
+    
+    embed=discord.Embed(title="SERVER")
+    embed.add_field(name="Ranked", value="React With: ✅", inline=False)
+    msg3 = await bot.send_message(b, embed=embed)
+    await bot.add_reaction(msg3, reaction)
+    
     for x in bot.get_all_emojis():
         if x.name == "Copper":
             emojiCop = x
@@ -240,6 +246,7 @@ async def on_reaction_add(reaction, user):
         roleGol = discord.utils.get(user.server.roles, name="Gold")
         rolePla = discord.utils.get(user.server.roles, name="Platinum")
         roleDia = discord.utils.get(user.server.roles, name="Diamond")
+        roleRanked = discord.utils.get(user.server.roles, name="Ranked")
 
         if reaction.emoji == emojiCop and channel == r:
             await bot.add_roles(user, roleCop)
@@ -277,6 +284,8 @@ async def on_reaction_add(reaction, user):
                 await bot.add_roles(user, roleNA)
             except Exception:
                 pass
+        elif reaction.emoji == '✅' and channel == b:
+            await bot.add_roles(user, roleRanked)
         
 @bot.event
 async def on_reaction_remove(reaction, user):
@@ -314,7 +323,8 @@ async def on_reaction_remove(reaction, user):
             await bot.remove_roles(user, rolePla)
         elif reaction.emoji == emojiDia and reaction.message.channel == r:
             await bot.remove_roles(user, roleDia)
-
+        elif reaction.emoji == '✅' and channel == b:
+            await bot.add_roles(user, roleRanked)
 
 ##@client.command(pass_context=True)
 ##async def spam(ctx, name, x=5):
