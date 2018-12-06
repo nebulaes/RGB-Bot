@@ -108,7 +108,7 @@ async def on_member_join(member):
         h = 0
         if channel.id == "463785244772794370"or channel.name == "╔-welcome":
             w=channel
-        if channel.id == "495362269736075273" and member.server.name == "Nebula eSports Community":
+        if channel.id == "495362269736075273":
             zc = channel
         elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports Community":
             bc = channel
