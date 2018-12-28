@@ -34,7 +34,7 @@ async def on_ready():
     m = str(time.strftime("%M"))
     time2 = (str(h+1)+":"+m+" BST")
     await bot.change_presence(game=discord.Game(name=time2, type=3))
-    async for message in bot.logs_from(c, limit=1):
+    async for message in bot.logs_from(c, limit=3):
         await bot.delete_message(message)    
     embed=discord.Embed(title="Server Rules:", color=0xf07e00)
     embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
@@ -53,7 +53,7 @@ async def on_ready():
     embed=discord.Embed(title="SERVER")
     embed.add_field(name="EU", value="React With: 🇪🇺", inline=False)
     embed.add_field(name="NA", value="React With: 🇺🇸", inline=True)
-    async for message in bot.logs_from(b, limit=2):
+    async for message in bot.logs_from(b, limit=3):
         await bot.delete_message(message)
     msg2 = await bot.send_message(b, embed=embed)
     reaction = '✅'
