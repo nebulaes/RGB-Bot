@@ -123,7 +123,6 @@ async def on_member_join(member):
     msg = member.name
     w,h = tfont.getsize(msg)
     draw.text((80, 120), msg, font=tfont, fill="white")
-    print(member.avatar_url)
     if(member.avatar_url == ""):
         cacheImg = Image.open("noImg.png")
         img_w, img_h = cacheImg.size
