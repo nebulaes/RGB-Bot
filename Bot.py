@@ -39,7 +39,7 @@ async def on_ready():
         await bot.delete_message(message)    
     embed=discord.Embed(title="Server Rules:", color=0xf07e00)
     embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/259028945104666637/464161871511945228/Nebula_Logo_3.png")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/369932731687370752/536000092738682890/RedCrop.png")
     embed.add_field(name="1.", value="-No Toxicity", inline=False)
     embed.add_field(name="2.", value="-No Spamming", inline=False)
     embed.add_field(name="3.", value="-No Posting DMs Without Permission", inline=False)
