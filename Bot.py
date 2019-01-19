@@ -460,6 +460,8 @@ async def clear(ctx, amount=5):
             else:
                 await bot.say("You Must Be An Admin To Use This Command.")
                 pass
+    except Exception:
+        pass
                 
 
 @bot.command(pass_context=True)
