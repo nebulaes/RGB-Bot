@@ -5,7 +5,8 @@ import asyncio
 import time, json, requests
 from discord.voice_client import VoiceClient
 
-
+from PIL import ImageFont
+from PIL import ImageDraw 
 from PIL import Image, ImageOps
 
 bot=discord.Client()
@@ -103,23 +104,58 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
+
     for channel in member.server.channels:
-        print(channel)
-        h = 0
-        if channel.id == "463785244772794370"or channel.name == "╔-welcome":
-            w=channel
-        if channel.id == "495362269736075273":
+        if channel.id == "535987415597449216" and member.server.id == "463785244772794368":
+            welcomeChannel = channel
+        elif channel.id == "495362269736075273":
             zc = channel
         elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports Community":
             bc = channel
         elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports Community":
             tc = channel
+        
+    img = Image.open("Welcome.png")
+    W, H = (800,300)
+    draw = ImageDraw.Draw(img)
+    # font = ImageFont.truetype(<font-file>, <font-size>)
+    tfont = ImageFont.truetype("libel-suit-rg.ttf", 50)
+    # draw.text((x, y),"Sample Text",(r,g,b))
+    msg = member.name
+    w,h = tfont.getsize(msg)
+    draw.text((80, 120), msg, font=tfont, fill="white")
+    print(member.avatar_url)
+    if(member.avatar_url == ""):
+        cacheImg = Image.open("noImg.png")
+        img_w, img_h = cacheImg.size
+        bg_w, bg_h = img.size
+        offset = ((bg_w - img_w) // 2 + 192, (bg_h - img_h) // 2)
+        img.paste(cacheImg, offset, cacheImg)
+        img.save('Message.png')
+        await bot.send_file(welcomeChannel,"Message.png")
 
-    print("{} Has Joined".format(member))
-    embed=discord.Embed(title=str(member.name), color=0xfa9361)
-    embed.set_author(name="Welcome To Nebula:")
-    embed.set_thumbnail(url=member.avatar_url)
-    await bot.send_message(w,embed=embed)
+    elif(".gif" in member.avatar_url):
+        cacheImg = requests.get(member.avatar_url[:-4]+"256")
+        open("cache.gif", 'wb').write(cacheImg.content)
+        cacheImg = Image.open("cache.gif")
+        img_w, img_h = cacheImg.size
+        bg_w, bg_h = img.size
+        offset = ((bg_w - img_w) // 2 + 192, (bg_h - img_h) // 2)
+        img.paste(cacheImg, offset)
+        img.save('Message.png')
+        await bot.send_file(welcomeChannel,"Message.png")
+    
+    else:
+        cacheImg = requests.get(member.avatar_url[:-4]+"256")
+        open("cache.png", 'wb').write(cacheImg.content)
+        cacheImg = Image.open("cache.png")
+        img_w, img_h = cacheImg.size
+        bg_w, bg_h = img.size
+        offset = ((bg_w - img_w) // 2 + 192, (bg_h - img_h) // 2)
+        img.paste(cacheImg, offset, cacheImg)
+        img.save('Message.png')
+        await bot.send_file(welcomeChannel,"Message.png")
+
     role = discord.utils.get(member.server.roles, name="New")
     role2 = discord.utils.get(member.server.roles, name="⋑-Members-⋐")
     await bot.add_roles(member, role)
@@ -142,11 +178,11 @@ async def on_member_join(member):
 async def on_member_remove(member):
     for channel in member.server.channels:
         h = 0
-        if channel.id == "495362269736075273" and member.server.name == "Nebula eSports Community":
+        if channel.id == "495362269736075273" and member.server.id == "463785244772794368":
             zc = channel
-        elif channel.id == "495363675830616073" and member.server.name == "Nebula eSports Community":
+        elif channel.id == "495363675830616073" and member.server.id == "463785244772794368":
             bc = channel
-        elif channel.id == "495367099024277515" and member.server.name == "Nebula eSports Community":
+        elif channel.id == "495367099024277515" and member.server.id == "463785244772794368":
             tc = channel
 
     t = 0
@@ -207,16 +243,7 @@ async def admin(ctx):
         #print(admins[x])
         embed.add_field(name="{}.".format(x+1), value=str(admins[x]), inline=True)
     await bot.say(embed=embed)
-    
-@bot.command(pass_context=True)
-async def logomaker(ctx):
-    embed=discord.Embed(title="RGB-BOT")
-    embed.set_author(name="LOGO MAKER")
-    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/259028945104666637/505841202487230490/TransparentEmoji.png")
-    embed.add_field(name="SUPPORTED COLOURS", value="BLUE, GOLD, GREEN, GREY, ORANGE, PURPLE, RED", inline=True)
-    embed.add_field(name="SUPPORTED FLAGS", value="AUSTRIA, BELGIUM, FINLAND, FRANCE, GERMANY, GREECE, HUNGARY, IRELAND, NETHERLANDS, ROMANIA, SLOVENIA, SWEDEN, UK, USA", inline=True)
-    await bot.say(embed=embed)
-    
+
 @bot.event
 async def on_reaction_add(reaction, user):
     if user.id != "461306582958080010":
@@ -379,40 +406,12 @@ async def count(m):
 
 
 @bot.command(pass_context=True)
-async def banner(ctx):
+async def logo(ctx):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
             await bot.delete_message(message)
-    await bot.send_file(channel,"NebulaRender3.jpg")
-
-@bot.command(pass_context=True)
-async def reverse(ctx):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-            await bot.delete_message(message)
-    await bot.send_file(channel,"Reverse.png")
-    
-@bot.command(pass_context=True)
-async def doot(ctx):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-            await bot.delete_message(message)
-    await bot.send_file(channel,"Doot.gif")
-    
-@bot.command(pass_context=True)
-async def spook(ctx):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-            await bot.delete_message(message)
-    await bot.send_file(channel,"Spook.gif")
-    
-@bot.command(pass_context=True)
-async def wut(ctx):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-            await bot.delete_message(message)
-    await bot.send_file(channel,"Wut.jpg")
-    
+    await bot.send_file(channel,"Logo.png")
+   
 @bot.command(pass_context=True)
 async def clear(ctx, amount=5):
     channel = ctx.message.channel
@@ -421,9 +420,9 @@ async def clear(ctx, amount=5):
         messages.append(message)
     await bot.delete_messages(messages)
     await bot.say("Messages Deleted.")
-        #async for message in bot.logs_from(channel, limit=1):
-            #time.sleep(2)
-        #await bot.delete_message(message)
+    async for message in bot.logs_from(channel, limit=1):
+        time.sleep(0.5)
+    await bot.delete_message(message)
 
 @bot.command(pass_context=True)
 async def now(ctx, value=0):
@@ -437,53 +436,6 @@ async def now(ctx, value=0):
     text = "The Time Is "+time2
     await bot.send_message(ctx.message.channel, text, tts=bool(value))
         
-@bot.event
-async def on_message(message):
-   if message.content.startswith("👏👏") or message.content.startswith("👏 👏"):
-        await bot.send_message(message.channel,"***MEME REVIEW***")
-   else:
-   		pass
-   if message.content.lower().startswith("dip dip"):
-        await bot.send_message(message.channel,"🥔🍟")
-   if "fuck you rgb bot" in str(message.content.lower()):
-        await bot.send_message(message.channel, "NO U")
-   elif "fuck" in str(message.content.lower()) and "fuck" in str(message.content.lower()) and "bot" in str(message.content.lower()):
-        await bot.send_message(message.channel, "NO U")
-        
-   else:
-        pass
-    
-   try:
-        await bot.process_commands(message)
-   except Exception:
-        pass
-
-@bot.command(pass_context=True)
-async def hmm(ctx):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-        await bot.delete_message(message)
-    await bot.send_message(channel, "HmmMmMMMmmmMmMmMMMmmmMm")
-    
-@bot.command(pass_context=True)
-async def fu(ctx, m : discord.member):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-        await bot.delete_message(message)
-    print(m)
-    await bot.send_message(channel, "Fuck You {}".format(str(m)))
-    
-    
-@bot.command(pass_context=True)
-async def nou(ctx):
-    channel = ctx.message.channel
-    async for message in bot.logs_from(channel, limit=1):
-        try:
-            await bot.delete_message(message)
-        except Exception:
-            pass
-    await bot.send_message(channel, "NO U")
-
 
 @bot.command(pass_context=True)
 async def rules(ctx):
@@ -494,153 +446,6 @@ async def rules(ctx):
     msg = await bot.say("RULES \n -No Toxicity \n -No Spamming \n -No Posting DMs \n -No Racism \n -No Posting or using Faces (Even Blurred) Without Permission \n -If You Join A Call And Are Asked To Mute Your Mic, Mute It \n -If Moved Out A Chat, Don't Move Back \n -Respect All Members \n -Respect Admins And Listen To Them \n -No NSFW")
     print(msg)
 
-@bot.command(pass_context=True)
-async def logo(ctx, colour = "GREY", flag : str = "NONE", background : bool = False):
-    channel = ctx.message.channel
-    colour = colour.upper()
-    flag = flag.upper()
-    b = isinstance(tuple(colour), tuple)
-    if colour == "BLUE":
-        background = Image.open(r"Blue.png")
-    elif colour == "GOLD":
-        background = Image.open(r"Gold.png")
-    elif colour == "GREEN":
-        background = Image.open(r"Green.png")
-    elif colour == "ORANGE":
-        background = Image.open(r"Orange.png")
-    elif colour == "PURPLE":
-        background = Image.open(r"Purple.png")
-    elif colour == "RED":
-        background = Image.open(r"Red.png")
-    elif b == True:
-        print("Tuple")
-        colour = tuple(colour)
-        img = Image.open(r"Mask.png")
-
-        black = 0,0,0
-
-        grayscale = ImageOps.grayscale(img)
-
-        background = Image.open(r"Grey.png")
-
-        ImageOps.colorize(grayscale, black, colour).save(r"Colour.png","PNG")
-
-        foreground = Image.open(r"Colour.png")
-
-        background.paste(foreground, (0, 0), img)
-        
-    else:
-        colour = "GREY"
-        background = Image.open(r"Grey.png")
-
-    if flag != "NONE":
-        if flag == "AUSTRIA":
-            foreground = Image.open(r"Austria.png")
-        elif flag == "BELGIUM":
-            foreground = Image.open(r"Belgium.png")
-        elif flag == "FINLAND":
-            foreground = Image.open(r"Finland.png")
-        elif flag == "FRANCE":
-            foreground = Image.open(r"France.png")
-        elif flag == "GERMANY":
-            foreground = Image.open(r"Germany.png")
-        elif flag == "GREECE":
-            foreground = Image.open(r"Greece.png")
-        elif flag == "HUNGARY":
-            foreground = Image.open(r"Hungary.png")
-        elif flag == "IRELAND":
-            foreground = Image.open(r"Ireland.png")
-        elif flag == "NETHERLANDS":
-            foreground = Image.open(r"Netherlands.png")
-        elif flag == "ROMANIA":
-            foreground = Image.open(r"Romania.png")
-        elif flag == "SLOVENIA":
-            foreground = Image.open(r"Slovenia.png")
-        elif flag == "SWEDEN":
-            foreground = Image.open(r"Sweden.png")
-        elif flag == "UK" or flag == "BRITAIN" or flag == "ENGLAND":
-            foreground = Image.open(r"UK.png")
-        elif flag == "USA" or flag == "AMERICA":
-            foreground = Image.open(r"USA.png")
-    else:
-        try:
-            file = open("Flag.txt","a+")
-            file.write(flag + "/n")
-            file.close
-        except Exception:
-            pass
-
-    foreground.paste(foreground, (0, 0), foreground)
-    background.paste(background, (0, 0), background)
-    background.paste(foreground, (0, 0), foreground)
-
-    background.save(r"New.png", "PNG")
-    await bot.send_file(channel,r"New.png")
-
-@bot.command(pass_context=True)
-async def logoc(ctx, c1 : int = 0, c2 : int = 0, c3 : int = 0, flag : str = "NONE"):
-
-    channel = ctx.message.channel
-    flag = flag.upper()
-    
-    img = Image.open(r"Mask.png")
-
-    colour = c1, c2, c3
-
-    black = 0,0,0
-
-    grayscale = ImageOps.grayscale(img)
-
-    background = Image.open(r"Grey.png")
-
-    ImageOps.colorize(grayscale, black, colour).save(r"Colour.png","PNG")
-
-    foreground = Image.open(r"Colour.png")
-
-    background.paste(foreground, (0, 0), img)
-
-    if flag != "NONE":
-        if flag == "AUSTRIA":
-            foreground = Image.open(r"Austria.png")
-        elif flag == "BELGIUM":
-            foreground = Image.open(r"Belgium.png")
-        elif flag == "FINLAND":
-            foreground = Image.open(r"Finland.png")
-        elif flag == "FRANCE":
-            foreground = Image.open(r"France.png")
-        elif flag == "GERMANY":
-            foreground = Image.open(r"Germany.png")
-        elif flag == "GREECE":
-            foreground = Image.open(r"Greece.png")
-        elif flag == "HUNGARY":
-            foreground = Image.open(r"Hungary.png")
-        elif flag == "IRELAND":
-            foreground = Image.open(r"Ireland.png")
-        elif flag == "NETHERLANDS":
-            foreground = Image.open(r"Netherlands.png")
-        elif flag == "ROMANIA":
-            foreground = Image.open(r"Romania.png")
-        elif flag == "SLOVENIA":
-            foreground = Image.open(r"Slovenia.png")
-        elif flag == "SWEDEN":
-            foreground = Image.open(r"Sweden.png")
-        elif flag == "UK" or flag == "BRITAIN" or flag == "ENGLAND":
-            foreground = Image.open(r"UK.png")
-        elif flag == "USA" or flag == "AMERICA":
-            foreground = Image.open(r"USA.png")
-        else:
-            pass
-
-    try:
-        foreground.paste(foreground, (0, 0), foreground)
-        background.paste(background, (0, 0), background)
-        background.paste(foreground, (0, 0), foreground)
-    except Exception:
-        pass
-
-    background.save(r"New.png", "PNG")
-    await bot.send_file(channel,r"New.png") 
-   
 async def timeloop():
     await bot.wait_until_ready()
     while not bot.is_closed:
@@ -652,4 +457,4 @@ async def timeloop():
 
     
 bot.loop.create_task(timeloop())
-bot.run(os.getenv('TOKEN'))
+bot.run("NDY0MTMyMzA5MTU1NzA4OTM4.DyP11g.sTk8lRp10HvONC1wNu_njKfxwLU")
