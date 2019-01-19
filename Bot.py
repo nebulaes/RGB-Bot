@@ -250,9 +250,20 @@ async def panel(ctx, message : str):
     W, H = (320,100)
     draw = ImageDraw.Draw(img)
     tfont = ImageFont.truetype("libel-suit-rg.ttf", 72)
+    tfont1 = ImageFont.truetype("libel-suit-rg.ttf", 55)
     msg = message
+    try:
+        msg = msg.upper()
+    except Exception:
+        pass
+    msg1 = msg[0]
+    msg2 = msg[1:]
+
     w,h = tfont.getsize(msg)
-    draw.text(((W-w)/2,(H-h)/2), msg, font=tfont, fill="white")
+    w1,h1 = tfont.getsize(msg1)
+    w2,h2 = tfont1.getsize(msg2)
+    draw.text(((W-w)/2,(H-h)/2-15), msg1, font=tfont, fill="white")
+    draw.text(((W-w)/2+w1,(H-h)/2+1), msg2, font=tfont1, fill="white")
     img.save('panel.png')
     await bot.send_file(ctx.message.channel,"panel.png")
     
