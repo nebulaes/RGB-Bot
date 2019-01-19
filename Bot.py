@@ -150,7 +150,7 @@ async def on_member_join(member):
         img_w, img_h = cacheImg.size
         bg_w, bg_h = img.size
         offset = ((bg_w - img_w) // 2 + 192, (bg_h - img_h) // 2)
-        img.paste(cacheImg, offset, img)
+        img.paste(cacheImg, offset)
         img.save('Message.png')
         await bot.send_file(welcomeChannel,"Message.png")
 
