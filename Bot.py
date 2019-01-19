@@ -440,28 +440,23 @@ async def logo(ctx):
 async def clear(ctx, amount=5):
     channel = ctx.message.channel
     messages = []
-    
-    try:
-        server = ctx.message.server
-        for role in server.roles:
-            #print(role)
-            if "admin" in str(role) or "Admin" in str(role) or "MODS" in str(role) or "mods" in str(role) or "Mods" in str(role) or "Moderator" in str(role):
-                adminRole = role
-                pass
-            if adminRole in ctx.message.author.roles:
-                async for message in bot.logs_from(channel, limit=int(amount)+1):
-                    messages.append(message)
-                await bot.delete_messages(messages)
-                await bot.say("Messages Deleted.")
-                async for message in bot.logs_from(channel, limit=1):
-                    time.sleep(0.5)
-                await bot.delete_message(message)
-                pass
-            else:
-                await bot.say("You Must Be An Admin To Use This Command.")
-                pass
-    except Exception:
-        pass
+    server = ctx.message.server
+    for role in server.roles:
+        if "admin" in str(role) or "Admin" in str(role) or "MODS" in str(role) or "mods" in str(role) or "Mods" in str(role) or "Moderator" in str(role):
+            adminRole = role
+        if adminRole in ctx.message.author.roles:
+            async for message in bot.logs_from(channel, limit=int(amount)+1):
+                messages.append(message)
+            await bot.delete_messages(messages)
+            await bot.say("Messages Deleted.")
+            async for message in bot.logs_from(channel, limit=1):
+                time.sleep(0.5)
+            await bot.delete_message(message)
+            pass
+        else:
+            await bot.say("You Must Be An Admin To Use This Command.")
+            pass
+
                 
 
 @bot.command(pass_context=True)
