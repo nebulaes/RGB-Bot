@@ -25,7 +25,7 @@ async def on_ready():
                 b = channel
             elif channel.id == "463785244772794370" or channel.name == "╔-welcome":
                 global w
-                w = channel
+                welcomeChannel = channel
             elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
                 global r
                 r = channel
