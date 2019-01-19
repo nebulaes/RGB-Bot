@@ -124,11 +124,10 @@ async def on_member_join(member):
     w,h = tfont.getsize(msg)
     draw.text((80, 120), msg, font=tfont, fill="white")
     if(member.avatar_url == ""):
-        cacheImg = Image.open("noImg.png")
+        cacheImg = Image.open("noImg.png").convert("RGBA")
         img_w, img_h = cacheImg.size
         bg_w, bg_h = img.size
         offset = ((bg_w - img_w) // 2 + 192, (bg_h - img_h) // 2)
-        img.convert("RGBA")
         img.paste(cacheImg, offset, cacheImg)
         img.save('Message.png')
         await bot.send_file(welcomeChannel,"Message.png")
@@ -136,11 +135,10 @@ async def on_member_join(member):
     elif(".gif" in member.avatar_url):
         cacheImg = requests.get(member.avatar_url[:-4]+"256")
         open("cache.gif", 'wb').write(cacheImg.content)
-        cacheImg = Image.open("cache.gif")
+        cacheImg = Image.open("cache.gif").convert("RGBA")
         img_w, img_h = cacheImg.size
         bg_w, bg_h = img.size
         offset = ((bg_w - img_w) // 2 + 192, (bg_h - img_h) // 2)
-        img.convert("RGBA")
         img.paste(cacheImg, offset)
         img.save('Message.png')
         await bot.send_file(welcomeChannel,"Message.png")
@@ -148,11 +146,10 @@ async def on_member_join(member):
     else:
         cacheImg = requests.get(member.avatar_url[:-4]+"256")
         open("cache.png", 'wb').write(cacheImg.content)
-        cacheImg = Image.open("cache.png")
+        cacheImg = Image.open("cache.png").convert("RGBA")
         img_w, img_h = cacheImg.size
         bg_w, bg_h = img.size
         offset = ((bg_w - img_w) // 2 + 192, (bg_h - img_h) // 2)
-        img.convert("RGBA")
         img.paste(cacheImg, offset, cacheImg)
         img.save('Message.png')
         await bot.send_file(welcomeChannel,"Message.png")
