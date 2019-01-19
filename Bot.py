@@ -242,6 +242,21 @@ async def admin(ctx):
         embed.add_field(name="{}.".format(x+1), value=str(admins[x]), inline=True)
     await bot.say(embed=embed)
 
+
+@bot.command(pass_context=True)
+async def panel(ctx, message : str):
+
+    img = Image.open("PanelBase.png")
+    W, H = (320,100)
+    draw = ImageDraw.Draw(img)
+    tfont = ImageFont.truetype("libel-suit-rg.ttf", 72)
+    msg = message
+    w,h = tfont.getsize(msg)
+    draw.text(((W-w)/2,(H-h)/2), msg, font=tfont, fill="white")
+    img.save('panel.png')
+    await bot.send_file(ctx.message.channel,"panel.png")
+    
+    
 @bot.event
 async def on_reaction_add(reaction, user):
     if user.id != "461306582958080010":
