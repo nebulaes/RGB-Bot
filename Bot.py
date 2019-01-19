@@ -17,13 +17,13 @@ async def on_ready():
     print("Ready")
     for server in bot.servers:
         for channel in server.channels:
-            if channel.id == "463789709341097984":
+            if channel.id == "463789709341097984" or channel.name == "╠-rules":
                 global c
                 c = channel
-            elif channel.id == "465584250129743874":
+            elif channel.id == "465584250129743874" or channel.name == "╠-server":
                 global b
                 b = channel
-            elif channel.id == "463785244772794370"or channel.name == "╔-welcome":
+            elif channel.id == "463785244772794370" or channel.name == "╔-welcome":
              
                 global w
                 w = channel
