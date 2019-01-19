@@ -25,7 +25,7 @@ async def on_ready():
                 b = channel
             elif channel.id == "463785244772794370" or channel.name == "╔-welcome":
                 global w
-                welcomeChannel = channel
+                w = channel
             elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
                 global r
                 r = channel
@@ -105,7 +105,7 @@ async def on_ready():
 async def on_member_join(member):
 
     for channel in member.server.channels:
-        if channel.id == "535987415597449216" and member.server.id == "463785244772794368":
+        if channel.id == "463785244772794370":
             welcomeChannel = channel
         elif channel.id == "495362269736075273":
             zc = channel
