@@ -19,7 +19,9 @@ async def on_ready():
         for channel in server.channels:
             if channel.id == "463789709341097984" or channel.name == "╠-rules":
                 global c
+                print(c)
                 c = channel
+              
             elif channel.id == "465584250129743874" or channel.name == "╠-server":
                 global b
                 b = channel
