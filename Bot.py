@@ -19,14 +19,11 @@ async def on_ready():
         for channel in server.channels:
             if channel.id == "463789709341097984" or channel.name == "╠-rules":
                 global c
-                print(c)
                 c = channel
-              
             elif channel.id == "465584250129743874" or channel.name == "╠-server":
                 global b
                 b = channel
             elif channel.id == "463785244772794370" or channel.name == "╔-welcome":
-             
                 global w
                 w = channel
             elif channel.id == "483791168111509504" or channel.name == "╠-ranks":
@@ -459,4 +456,4 @@ async def timeloop():
 
     
 bot.loop.create_task(timeloop())
-bot.run("NDY0MTMyMzA5MTU1NzA4OTM4.DyP11g.sTk8lRp10HvONC1wNu_njKfxwLU")
+bot.run(os.getenv('TOKEN'))
