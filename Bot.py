@@ -467,8 +467,20 @@ async def rules(ctx):
     channel = ctx.message.channel
     async for message in bot.logs_from(channel, limit=1):
         await bot.delete_message(message)
-    msg = await bot.say("RULES \n -No Toxicity \n -No Spamming \n -No Posting DMs \n -No Racism \n -No Posting or using Faces (Even Blurred) Without Permission \n -If You Join A Call And Are Asked To Mute Your Mic, Mute It \n -If Moved Out A Chat, Don't Move Back \n -Respect All Members \n -Respect Admins And Listen To Them \n -No NSFW")
-    print(msg)
+    embed=discord.Embed(title="Server Rules:", color=0xf07e00)
+    embed.set_author(name="RULES: ACCEPT RULES BY CLICKING GREEN TICK")
+    embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/369932731687370752/536000092738682890/RedCrop.png")
+    embed.add_field(name="1.", value="-No Toxicity", inline=False)
+    embed.add_field(name="2.", value="-No Spamming", inline=False)
+    embed.add_field(name="3.", value="-No Posting DMs Without Permission", inline=False)
+    embed.add_field(name="4.", value="-No Racism", inline=False)
+    embed.add_field(name="5.", value="-Respect Admins", inline=False)
+    embed.add_field(name="6.", value="-Respect All Members", inline=False)
+    embed.add_field(name="7.", value="-No NSFW", inline=False)
+    embed.add_field(name="8.", value="-No Posting Server Invite Without Permission", inline=False)
+    embed.add_field(name="9.", value="-ACCEPT RULES TO GAIN A ROLE BY CLICKING GREEN TICK", inline=False)
+    embed.set_footer(text="Thank You.")
+    msg = await bot.send_message(channel, embed=embed)
 
 async def timeloop():
     await bot.wait_until_ready()
