@@ -66,7 +66,7 @@ async def on_ready():
     await bot.add_reaction(msg2, reactionNA)
     
     embed=discord.Embed(title="SERVER")
-    embed.add_field(name="Ranked", value="React With: ✅", inline=False)
+    embed.add_field(name="Ranked Ping", value="React With: ✅", inline=False)
     msg3 = await bot.send_message(b, embed=embed)
     await bot.add_reaction(msg3, reaction)
     
