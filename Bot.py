@@ -32,7 +32,7 @@ async def on_ready():
 
     h = int(time.strftime("%I"))
     m = str(time.strftime("%M"))
-    time2 = (str(h+1)+":"+m+" BST")
+    time2 = (str(h)+":"+m+" BST")
     await bot.change_presence(game=discord.Game(name=time2, type=3))
     async for message in bot.logs_from(c, limit=3):
         await bot.delete_message(message)    
@@ -474,7 +474,7 @@ async def now(ctx, value=0):
 
     h = int(time.strftime("%I"))
     m = str(time.strftime("%M"))
-    time2 = (str(h+1)+":"+m+" BST")
+    time2 = (str(h)+":"+m+" BST")
     text = "The Time Is "+time2
     await bot.send_message(ctx.message.channel, text, tts=bool(value))
         
